@@ -1,0 +1,36 @@
+.Container {
+    border: 1rpx dashed #aaa;
+    font-size: 30rpx;
+    margin: 0 auto;
+    padding: 30rpx 20rpx;
+    text-align: center;
+    width: 90%;
+}
+
+.nearby-container {
+    margin-top: 10rpx;
+}
+
+.nearby {
+    display: inline-block;
+    font-size: 30rpx;
+    margin-left: 15rpx;
+}
+
+.nearby-name {
+    color: #9b9b9b;
+    display: inline-block;
+    font-size: 28rpx;
+    margin: 0 15rpx;
+}
+
+.nearby-gl {
+    font-size: 20rpx;
+}
+
+.ghdesc {
+    color: #ff6a00;
+    font-size: 23rpx;
+    margin: 8rpx 0;
+    text-align: center;
+}

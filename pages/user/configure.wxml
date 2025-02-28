@@ -1,0 +1,47 @@
+<view class="container">
+    <text class="title">潮汐模式</text>
+    <text class="desc">您可以根据自己是赶海还是钓鱼选择曲线模式。</text>
+    <radio-group bindchange="radioTideChange">
+        <view>
+            <label>
+                <radio checked="{{radioTideType==1}}" value="1"></radio>钓鱼模式</label>
+            <label>
+                <radio checked="{{radioTideType==2}}" value="2"></radio>赶海模式</label>
+        </view>
+    </radio-group>
+</view>
+<view class="container">
+    <text class="title">风速模式</text>
+    <text class="desc">您可以更改风速使用小时计算还是秒计算方式显示。</text>
+    <radio-group bindchange="radioWindChange">
+        <view>
+            <label>
+                <radio checked="{{radioWindType==1}}" value="1"></radio>公里/时</label>
+            <label>
+                <radio checked="{{radioWindType==2}}" value="2"></radio>米/秒</label>
+        </view>
+    </radio-group>
+</view>
+<view class="container">
+    <text class="title">回复模式</text>
+    <text class="desc">您可以关闭曲线图的回复功能以便获得更好的数据加载速度。</text>
+    <radio-group bindchange="radioCommentChange">
+        <view>
+            <label>
+                <radio checked="{{radioIsComment==1}}" value="1"></radio>打开</label>
+            <label>
+                <radio checked="{{radioIsComment==0}}" value="0"></radio>关闭</label>
+        </view>
+    </radio-group>
+</view>
+<view class="container">
+    <text class="title">缓存管理</text>
+    <text class="desc">遇到数据异常可以清除缓存。
+  比如曲线无法显示、重新获取地图资料等等。
+  需要右上角“...”按钮重新进入小程序生效。
+  </text>
+    <view class="buts">
+        <button bindtap="bindClearCache">清除缓存（{{currentSize}}%）</button>
+    </view>
+</view>
+<view style="height:150rpx;"></view>

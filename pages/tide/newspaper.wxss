@@ -1,0 +1,154 @@
+ec-canvas {
+    height: 450rpx;
+    width: 100%;
+}
+
+.container .title {
+    font-size: 30rpx;
+    margin: 8rpx 0;
+}
+
+#day15 .desc {
+    color: #fff;
+    font-size: 30rpx;
+    margin: 20rpx 0rpx 10rpx;
+    text-align: left;
+}
+
+#day15 .desc2 {
+    color: #a5a5a5;
+    font-size: 23rpx;
+    padding: 5rpx 10rpx;
+}
+
+.calendarlist {
+    border-top: 5rpx solid #0ac9c2;
+    font-size: 25rpx;
+    padding: 10rpx 0;
+}
+
+.calendarlist:nth-child(odd) {
+    background-color: #152929;
+    border-top: 5rpx solid #1f5b59;
+}
+
+.fj {
+    background-color: #000!important;
+}
+
+.fj .title {
+    box-shadow: 2rpx 3rpx 20rpx 5rpx #221e1e!important;
+}
+
+.calendarlist:hover {
+    background: #333!important;
+}
+
+.calendarlist .titledate {
+    font-size: 28rpx;
+    padding: 5rpx 0;
+}
+
+.calendarlist .titledate text {
+    margin: 2rpx 15rpx 2rpx 5rpx;
+}
+
+.calendarlist .titledate .week {
+    color: #6b6a6a;
+}
+
+.calendarlist .titledate .lunarDay {
+    color: #6b6a6a;
+}
+
+.calendarlist .titledate .tide>text {
+    margin: 0;
+}
+
+.calendarlist .titledate .recommend {
+    float: right;
+}
+
+.calendarlist .title {
+    background-color: #1f5b59;
+    background: initial;
+    box-shadow: 2rpx 3rpx 20rpx 5rpx #071a1a;
+    color: #fff;
+    left: 0;
+    padding: 0;
+    z-index: 99999;
+}
+
+.calendarlist .title .column {
+    color: #fff;
+    display: inline-block;
+    padding: 5rpx 0rpx;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.calendarlist .value {
+    font-size: 22rpx;
+    padding: 5rpx 0;
+}
+
+.calendarlist .title .column1,.calendarlist .value .column1 {
+    width: 110rpx;
+}
+
+.calendarlist .title .column2,.calendarlist .value .column2 {
+    width: 100rpx;
+}
+
+.calendarlist .title .column3,.calendarlist .value .column3 {
+    width: 90rpx;
+}
+
+.calendarlist .title .column4,.calendarlist .value .column4 {
+    width: 100rpx;
+}
+
+.calendarlist .title .column5,.calendarlist .value .column5 {
+    width: 140rpx;
+}
+
+.calendarlist .title .column6,.calendarlist .value .column6 {
+    width: 105rpx;
+}
+
+.calendarlist .title .column9,.calendarlist .value .column9 {
+    width: 190rpx;
+}
+
+.calendarlist .value .column {
+    color: #8a8a8a;
+    display: inline-block;
+    padding: 2rpx 0;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.calendarlist .desc {
+    padding: 5rpx 0;
+}
+
+.calendarlist .desc .title {
+    background: initial;
+    color: #ff6a00;
+    padding: 5rpx 8rpx;
+}
+
+.calendarlist .desc .value {
+    padding: 8rpx;
+}
+
+.calendarlist .desc .referee {
+    color: #c2c2c2;
+    float: right;
+    width: 280rpx;
+}
+
+.calendarlist .desc text {
+    margin-right: 20rpx;
+}

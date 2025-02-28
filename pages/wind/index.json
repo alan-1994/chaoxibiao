@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "ec-canvas": "../../ec-canvas/ec-canvas",
+        "Calendar": "../../Components/calendar/calendar"
+    },
+    "navigationBarTitleText": "天气预报"
+}

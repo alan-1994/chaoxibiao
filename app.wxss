@@ -1,0 +1,697 @@
+.container {
+    align-items: center;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.container,page {
+    background-color: #122b3a;
+    color: #fff;
+}
+
+.search {
+    height: 70rpx;
+    overflow: hidden;
+    position: relative;
+}
+
+.search .input {
+    background: #fff;
+    border: 1rpx solid #1f5b59;
+    color: #1f5b59;
+    font-size: 26rpx;
+    height: 55rpx;
+    left: 0;
+    padding: 10rpx 0rpx;
+    position: absolute;
+    text-align: center;
+    top: -1rpx;
+    width: 100%;
+}
+
+.search .but {
+    right: -1rpx;
+}
+
+.search .but,.search .icon {
+    background-color: #1f5b59;
+    border: 5rpx solid #1f5b59;
+    height: 65rpx;
+    position: absolute;
+    top: -1rpx;
+    width: 100rpx;
+    z-index: 99;
+}
+
+.search .icon {
+    left: -1rpx;
+}
+
+.shadow {
+    box-shadow: 2rpx 3rpx 20rpx 5rpx #011111;
+}
+
+.weui-grids {
+    margin: auto;
+}
+
+.weui-grids .weui-grid {
+    border: 2rpx solid #fff;
+    border-radius: 10rpx;
+    display: inline-block;
+    height: 160rpx;
+    margin: 8rpx;
+    overflow: hidden;
+    width: 216rpx;
+}
+
+.weui-grids .weui-grid .img {
+    height: 100%;
+    width: 100%;
+}
+
+.ship .row {
+    background-color: #283f41;
+    margin: 10rpx 0 0;
+    padding: 10rpx 0;
+    transition: all .5s;
+}
+
+.ship .row:hover {
+    background-color: #3b5c5f;
+}
+
+.ship .row .img {
+    border: 2rpx solid #fff;
+    border-radius: 10rpx;
+    display: inline-block;
+    height: 200rpx;
+    margin: 10rpx;
+    overflow: hidden;
+    position: relative;
+    width: 240rpx;
+}
+
+.ship .row .img image {
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+}
+
+.ship .row .img .similar {
+    background: rgba(0,0,0,.6);
+    bottom: 2rpx;
+    font-size: 28rpx;
+    position: absolute;
+    right: 0rpx;
+    text-align: center;
+    text-shadow: 2rpx 2rpx 2rpx 5rpx #000;
+    width: 100%;
+}
+
+.ship .row .left {
+    display: inline-block;
+    margin-left: 10rpx;
+    vertical-align: top;
+    width: calc(100% - 275rpx);
+}
+
+.ship .row .left .title {
+    flex: 1;
+    font-size: 30rpx;
+    margin-top: 10rpx;
+    overflow: hidden;
+    padding-left: 5rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ship .row .left .desc {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    color: #aaa;
+    display: -webkit-box;
+    font-size: 20rpx;
+    height: 110rpx;
+    line-height: 28rpx;
+    margin: 16rpx 10rpx 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.ship .row .left .desc .name {
+    color: #e6e6e6;
+    flex: 1;
+    font-size: 22rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ship .row .left .extend {
+    margin-top: 10rpx;
+    padding: 0;
+    text-align: right;
+}
+
+.ship .row .left .extend .date {
+    color: #c7c7c7;
+    float: right;
+    font-size: 22rpx;
+    margin-right: 10rpx;
+}
+
+.ship .row .left .extend .charge {
+    color: #ff6a00;
+    float: right;
+    font-size: 22rpx;
+    margin-right: 10rpx;
+}
+
+.ship .row .left .extend .strategy {
+    color: red;
+    float: right;
+    font-size: 22rpx;
+    margin-right: 10rpx;
+}
+
+.ship .row .left .extend .tag {
+    color: #fff;
+    float: left;
+    font-size: 22rpx;
+    margin-left: 10rpx;
+}
+
+.basan>.title {
+    background-color: #283f41;
+    font-size: 32rpx;
+    padding: 10rpx;
+    text-align: left;
+}
+
+.basan>.title text {
+    margin-left: 10rpx;
+}
+
+.basan .row {
+    background-color: #283f41;
+    margin: 10rpx 0 0;
+    transition: all .5s;
+}
+
+.basan .row:hover {
+    background-color: #3b5c5f;
+}
+
+.basan .row .title {
+    font-size: 30rpx;
+    padding: 5rpx 20rpx;
+}
+
+.basan .row .desc {
+    color: #aaa;
+    font-size: 25rpx;
+    line-height: 28rpx;
+    padding: 5rpx 40rpx;
+}
+
+.basan .row .extend {
+    font-size: 25rpx;
+    padding: 5rpx 20rpx;
+}
+
+.basan .row .extend .th {
+    color: #fff;
+    display: inline-block;
+    font-size: 25rpx;
+    width: 49%;
+}
+
+.basan .row .extend .tc {
+    color: #aaa;
+}
+
+.comment {
+    border-top: 5rpx solid #1f5b59;
+    margin-top: 15rpx;
+    padding: 5rpx 10rpx;
+    position: relative;
+}
+
+.comment .title {
+    font-size: 30rpx;
+}
+
+.comment .pedar {
+    color: #eee;
+    float: right;
+    font-size: 25rpx;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+}
+
+.comment .pedar text {
+    color: #ff6a00;
+}
+
+.comment .hide {
+    display: none;
+}
+
+.comment .input {
+    background-color: #fff;
+    border-radius: 10rpx;
+    color: #000;
+    font-size: 28rpx;
+    height: 130rpx;
+    margin: 10rpx 0;
+    padding: 10rpx 2%;
+    width: 96%;
+}
+
+.comment .buts {
+    position: relative;
+}
+
+.comment .buts .emote {
+    left: 5rpx;
+    position: absolute;
+    top: 2rpx;
+}
+
+.comment .buts .emote image {
+    height: 70rpx;
+    width: 70rpx;
+}
+
+.comment .buts .but {
+    background-color: #1f5b59;
+    color: #fff;
+    float: right;
+    font-size: 28rpx;
+    width: 30%;
+}
+
+.comment .buts .desc {
+    color: grey;
+    float: right;
+    font-size: 22rpx;
+    margin-right: 20px;
+    margin-top: 20rpx;
+}
+
+.comment .buts .btn-hover {
+    background-color: #3ba7a3;
+}
+
+.comment .list {
+    margin-top: 20rpx;
+}
+
+.comment .list .row {
+    border-top: 1rpx dotted #1f5b59;
+    padding: 10rpx 0;
+}
+
+.comment .list .row .head {
+    border: 5rpx solid hsla(0,0%,100%,.6);
+    border-radius: 100%;
+    display: inline-block;
+    height: 120rpx;
+    margin: 5rpx 10rpx;
+    width: 120rpx;
+}
+
+.comment .list .row .content {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 150rpx);
+}
+
+.comment .list .row .content .info {
+    font-size: 25rpx;
+    margin: 5rpx 20rpx 5rpx 40rpx;
+}
+
+.comment .list .row .content .info>view>.name {
+    color: #3ba7a3;
+    font-size: 33rpx;
+}
+
+.comment .list .row .content .info>view>.addrstr {
+    color: #b6b6b6;
+    font-size: 22rpx;
+    margin-left: 20rpx;
+}
+
+.comment .list .row .content .info>view>.date {
+    color: #b6b6b6;
+    float: right;
+}
+
+.comment .list .row .content .info .list-comment {
+    margin: 10rpx;
+}
+
+.comment .list .row .content .info .list-comment .row-comment {
+    margin: 5rpx 0;
+}
+
+.comment .list .row .content .info .list-comment .row-comment .name {
+    color: #3ba7a3;
+}
+
+.comment .list .row .content .info .list-comment .row-comment .date {
+    color: #b6b6b6;
+    font-size: 22rpx;
+    margin: 0 5rpx;
+}
+
+.comment .list .row .content .info .list-comment .row-comment .comm {
+    color: grey;
+}
+
+.comment .list .row .content .info .type3 {
+    background-color: #283f41;
+    border-radius: 15rpx;
+    margin: 20rpx 0 0;
+    padding: 5rpx 0;
+    transition: all .5s;
+}
+
+.comment .list .row .content .info .type3 .img {
+    border: 1rpx solid #fff;
+    border-radius: 15rpx;
+    display: inline-block;
+    height: 80rpx;
+    margin: 5rpx 5rpx 0;
+    overflow: hidden;
+    position: relative;
+    width: 100rpx;
+}
+
+.comment .list .row .content .info .type3 .img image {
+    height: 100%;
+    width: 100%;
+}
+
+.comment .list .row .content .info .type3 .left {
+    display: inline-block;
+    margin-left: 10rpx;
+    margin-top: 10rpx;
+    vertical-align: top;
+    width: calc(100% - 135rpx);
+}
+
+.comment .list .row .buts-row {
+    color: grey;
+    font-size: 24rpx;
+    padding: 10rpx 20rpx;
+}
+
+.comment .list .row .buts-row .del {
+    float: left;
+    font-size: 20rpx;
+    margin-left: 20rpx;
+}
+
+.comment .list .row .buts-row .comm {
+    float: right;
+}
+
+.comment .list .row .buts-row .support {
+    float: right;
+    margin: 0 20rpx;
+}
+
+.comment .list .row .buts-row .support .com_support_img {
+    height: 26rpx;
+    width: 26rpx;
+}
+
+.windlist {
+    font-size: 30rpx;
+}
+
+.windlist text {
+    margin: 5rpx 10rpx 5rpx 0;
+}
+
+.windlist .title {
+    background-color: #1f5b59;
+    box-shadow: 2rpx 3rpx 20rpx 5rpx #011111;
+    color: #fff;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    z-index: 99999;
+}
+
+.windlist .title .temperature {
+    float: right;
+}
+
+.windlist .title .description {
+    background: #122b3a;
+    color: #cecece;
+    font-size: 24rpx;
+    padding: 5rpx 10rpx;
+}
+
+.windlist .title .column {
+    background-color: #1f5b59;
+    color: #fff;
+    display: inline-block;
+    font-size: 26rpx;
+    padding: 5rpx 0rpx;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.windlist .value {
+    border-bottom: 1rpx solid #1f5b59;
+    padding-bottom: 10rpx;
+}
+
+.windlist .value:nth-child(odd) {
+    background-color: #152929;
+}
+
+.windlist .value:hover {
+    background: #333;
+}
+
+.windlist .title .column1,.windlist .value .column1 {
+    width: 60rpx;
+}
+
+.windlist .title .column2,.windlist .value .column2 {
+    width: 140rpx;
+}
+
+.windlist .title .column3,.windlist .value .column3 {
+    width: 130rpx;
+}
+
+.windlist .title .column4,.windlist .value .column4 {
+    width: 90rpx;
+}
+
+.windlist .title .column5,.windlist .value .column5 {
+    width: 100rpx;
+}
+
+.windlist .title .column6,.windlist .value .column6 {
+    width: 210rpx;
+}
+
+.windlist .title .column9,.windlist .value .column9 {
+    width: 190rpx;
+}
+
+.windlist .value .column7 {
+    margin-right: 5rpx;
+    vertical-align: top;
+    width: 55rpx;
+}
+
+.windlist .value .column8 {
+    width: 150rpx;
+}
+
+.windlist .value .column {
+    color: #8a8a8a;
+    display: inline-block;
+    font-size: 24rpx;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.windlist .value .column1 .hour {
+    color: #cecece;
+    font-size: 30rpx;
+}
+
+.windlist .value .column1 .day {
+    color: #6b6a6a;
+    font-size: 18rpx;
+}
+
+.windlist .value .column2 .temperature {
+    font-size: 20rpx;
+}
+
+.windlist .value .column2 .humidity {
+    color: #cecece;
+    font-size: 30rpx;
+}
+
+.windlist .value .column2 .pressure,.windlist .value .column3 .visibility {
+    font-size: 20rpx;
+}
+
+.windlist .value .column3 .skycon {
+    color: #cecece;
+    font-size: 30rpx;
+}
+
+.windlist .value .column3 .dswrf {
+    font-size: 20rpx;
+}
+
+.windlist .value .column4 .wave1 {
+    color: #cecece;
+    font-size: 30rpx;
+}
+
+.windlist .value .column4 .wave2 {
+    font-size: 20rpx;
+}
+
+.windlist .value .column5 .progress {
+    bottom: 5rpx;
+    height: 80%;
+    position: absolute;
+    right: 6rpx;
+    width: 5rpx;
+}
+
+.windlist .value .column5 .tide1 {
+    color: #cecece;
+    font-size: 32rpx;
+}
+
+.windlist .value .column5 .tide2,.windlist .value .column5 .tide3,.windlist .value .column9 .tide {
+    font-size: 20rpx;
+}
+
+.windlist .value .column7 .wind1 {
+    color: #cecece;
+    font-size: 40rpx;
+}
+
+.windlist .value .column7 .wind2 {
+    font-size: 16rpx;
+}
+
+.windlist .value .column7 .wind3 {
+    font-size: 18rpx;
+}
+
+.windlist .value .column8 .progress {
+    bottom: -1rpx;
+    height: 4rpx;
+    left: 1rpx;
+    position: absolute;
+    width: 100%;
+}
+
+.windlist .value .column8 .wind1 {
+    color: #cecece;
+    font-size: 25rpx;
+}
+
+.windlist .value .column8 .wind2,.windlist .value .column8 .wind3 {
+    font-size: 20rpx;
+}
+
+.newdate {
+    border-bottom: 1rpx solid #1f5b59;
+    border-top: 1rpx solid #1f5b59;
+    box-sizing: border-box;
+    display: block;
+    font-size: 25rpx;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.newdate .item {
+    display: inline-block;
+    width: 105rpx;
+}
+
+.newdate .item .w {
+    padding: 8rpx 2rpx;
+    position: relative;
+}
+
+.newdate .item .select {
+    background-color: #1f5b59;
+    border: 1px solid #122b3a;
+}
+
+.newdate .item .w .day {
+    color: #fff;
+    font-size: 35rpx;
+    padding-left: 15rpx;
+    text-align: left;
+}
+
+.newdate .item .today {
+    border: 1px solid #1f5b59;
+}
+
+.newdate .item .w .week {
+    color: #fff;
+    font-size: 16rpx;
+    position: absolute;
+    right: 10rpx;
+    top: 20rpx;
+}
+
+.newdate .item .w .earthly {
+    color: #adadad;
+    font-size: 15rpx;
+    position: absolute;
+    right: 10rpx;
+    top: 45rpx;
+}
+
+.newdate .item .w .tide {
+    border-radius: 7rpx;
+    font-size: 16rpx;
+    margin: 16rpx auto 0;
+    padding: 4rpx 0;
+    width: 88%;
+}
+
+.newdate .item .w .xiao {
+    background: #036336;
+}
+
+.newdate .item .w .zhong {
+    background: #8b8b8b;
+}
+
+.newdate .item .w .da {
+    background: #c70822;
+}

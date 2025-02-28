@@ -1,0 +1,54 @@
+<image class="user_back" mode="aspectFill" src="{{Comment.toHeadimg(ship.ShipPhoto)}}"></image>
+<view class="user_info">
+    <image bindtap="bindLogin" class="head" src="{{Comment.toHeadimg(ship.HeadMinUrl)}}"></image>
+    <view class="name">{{ship.MemberName}}</view>
+</view>
+<view class="sort_title">{{ship.SortTitle}}<text>{{ship.Charge}}</text>
+</view>
+<view class="article">
+    <view class="title">{{ship.Title}}</view>
+    <view class="desc">
+        <text>{{ship.Introduce}}</text>
+    </view>
+    <view class="extend">
+        <button bindtap="bindCalling" class="btn" hoverClass="btn-hover" wx:if="{{item.Phone}}">拨打电话</button>
+        <button bindtap="bindAddrstr" class="btn" hoverClass="btn-hover">地图导航</button>
+        <button bindtap="bindTides" class="btn" hoverClass="btn-hover">目标潮汐</button>
+        <button bindtap="bindStrategy" class="btn" hoverClass="btn-hover" wx:if="{{ship.Strategy}}">攻略</button>
+        <view style="clear: both;"></view>
+    </view>
+    <view class="weui-grids">
+        <view class="weui-grid" wx:for="{{ship.Extended.data}}">
+            <image bindtap="previewImg" class="img" data-index="{{index}}" mode="aspectFill" src="{{Comment.toHeadimg(item.Img)}}"></image>
+        </view>
+    </view>
+</view>
+<view class="basan">
+    <view class="title">
+        <text>子钓点：</text>
+    </view>
+    <view class="row" wx:for="{{basans.rows}}" wx:for-index="groupindex">
+        <view class="title">{{basans.rows[groupindex].Title}}</view>
+        <view class="desc">
+            <text>{{basans.rows[groupindex].Introduce}}</text>
+        </view>
+        <view class="extend">
+            <view>
+                <text class="th" wx:if="{{basans.rows[groupindex].Hera}}"> 钓法：<text class="tc">{{basans.rows[groupindex].Hera}}</text>
+                </text>
+            </view>
+            <view>
+                <text class="th" wx:if="{{basans.rows[groupindex].MinNumber>0||basans.rows[groupindex].MaxNumber>0}}"> 人数：<text class="tc">{{basans.rows[groupindex].MinNumber}}~{{basans.rows[groupindex].MaxNumber}}</text>
+                </text>
+                <text class="th" wx:if="{{basans.rows[groupindex].Price>0}}"> 价钱：<text class="tc">{{basans.rows[groupindex].Price}}</text>
+                </text>
+            </view>
+        </view>
+        <view class="weui-grids">
+            <view class="weui-grid" wx:for="{{basans.rows[groupindex].Extended.data}}" wx:for-index="cellindex">
+                <image bindtap="previewBasanImg" class="img" data-groupindex="{{groupindex}}" data-index="{{cellindex}}" mode="aspectFill" src="{{Comment.toHeadimg(item.Img)}}"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="Comment" src="../tide/comment.wxs" />

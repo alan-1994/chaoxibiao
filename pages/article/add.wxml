@@ -1,0 +1,44 @@
+<view class="explain">
+    <text>
+ 说明：
+ 该信息填写限于“管理员”使用，不对外，注意以下几点：
+ 1.必须标记位置
+ 2.图片列表中第一张图片为主图，至少要有一图片
+ 3.内容信息按照提示填写，不能留空
+ 4.不能乱上传违规内容，一经发现，报警处理。
+ </text>
+</view>
+<view class="article">
+    <form bindsubmit="binComment">
+        <view class="title">
+            <input name="Title" placeholder="钓点名称"></input>
+            <input name="Phone" placeholder="P" type="number"></input>
+        </view>
+        <view class="desc">
+            <textarea autoHeight name="Introduce" placeholder="介绍"></textarea>
+        </view>
+        <view class="title">
+            <input name="Charge" placeholder="F"></input>
+            <input name="AddrStr" placeholder="钓点地址" value="{{addrStr}}"></input>
+            <button bindtap="bindPosition" class="btn" hoverClass="btn-hover">标记位置（定位）</button>
+            <input name="Longitude" style="display:none;" value="{{longitude}}"></input>
+            <input name="Latitude" style="display:none;" value="{{latitude}}"></input>
+        </view>
+        <view class="explain">
+            <text>
+      图片列表中第一张图片为主图，至少要有一图片
+    </text>
+        </view>
+        <view class="gallery">
+            <view class="item" wx:for="{{images}}">
+                <image bindtap="previewImage" data-src="{{item}}" mode="aspectFill" src="{{item}}"></image>
+                <view bindtap="delete" class="delete" data-index="{{index}}">X</view>
+            </view>
+            <view bindtap="chooseImage" class="item">
+                <view class="addIcon">+</view>
+            </view>
+        </view>
+        <button bindtap="bindAddrstr" class="btn" hoverClass="btn-hover"> 保存草稿 </button>
+        <button formType="submit">提交</button>
+    </form>
+</view>

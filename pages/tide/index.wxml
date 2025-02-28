@@ -1,0 +1,319 @@
+<view class="container">
+    <text class="title1">{{tide.Title1}}</text>
+    <text class="title2">{{tide.Title2}}</text>
+</view>
+<view>
+    <picker bindchange="bindCCChange" range="{{ccList}}" value="{{ccIndex}}">
+        <view class="picker" style="font-size: 28rpx;height:50rpx"> 潮汐刻度：{{ccList[ccIndex]}} </view>
+    </picker>
+</view>
+<view class="tidedesc"> 时间：{{WeatherHour.hour2}}； <block wx:if="{{modeType==2}}">{{WeatherHour.skycon}}；赶海： <block wx:if="{{WeatherHour.tide.state=='➘'}}">
+            <text wx:if="{{WeatherHour.tide.percentage<8&&WeatherHour.tide.percentage>5}}">一般</text>
+            <text style="color:Lime" wx:elif="{{WeatherHour.tide.percentage<=5}}">适宜</text>
+            <text style="color:Orange" wx:else>不宜</text>
+        </block>
+        <block wx:elif="{{WeatherHour.tide.state=='➚'}}">
+            <text style="color:Orange" wx:if="{{WeatherHour.tide.percentage<=2}}">上岸</text>
+            <text style="color:red" wx:else>危险</text>
+        </block>
+        <block wx:elif="{{WeatherHour.tide.state=='➙'}}">
+            <text style="color:Lime" wx:if="{{WeatherHour.tide.percentage<2}}">适宜</text>
+            <text style="color:Orange" wx:else>不宜</text>
+        </block> ； </block> {{WeatherHour.tide.state}}{{WeatherHour.tide.percentage}}分潮； 潮高：{{Fix.toFix(WeatherHour.tide.height)}}米； <block wx:if="{{modeType==1}}"> 配重流速：{{WeatherHour.tide.speed}}米/秒</block>
+</view>
+<view class="container">
+    <ec-canvas canvasId="mychart-line" ec="{{ec}}" id="mychart-dom-line"></ec-canvas>
+</view>
+<view class="windlist" style="padding-bottom:0;" wx:if="{{modeType==1}}">
+    <view class="title">
+        <view class="column column1">时间</view>
+        <view class="column column2">温湿度</view>
+        <view class="column column3">天气</view>
+        <view class="column column4">浪</view>
+        <view class="column column5">潮汐</view>
+        <view class="column column6">风</view>
+    </view>
+    <view bindtap="bindOpenWeather2" class="value">
+        <view class="column column1">
+            <view class="hour" style="font-size:25rpx;">{{WeatherHour.hour2}}</view>
+        </view>
+        <view class="column column2">
+            <view class="humidity">{{WeatherHour.temperature}}°C</view>
+            <view class="temperature">湿度{{Fix.toFix(WeatherHour.humidity*100)}}%</view>
+            <view class="pressure" wx:if="{{WeatherHour.water_temperature}}">水温{{Fix.toFix(WeatherHour.water_temperature)}}°C</view>
+            <view class="pressure" wx:if="{{!WeatherHour.water_temperature}}">辐射{{Fix.toFix(WeatherHour.dswrf)}}</view>
+        </view>
+        <view class="column column3">
+            <view class="skycon">{{WeatherHour.skycon}}</view>
+            <view class="visibility">可见{{WeatherHour.visibility}}km</view>
+            <view class="dswrf">气压{{WeatherHour.pressure}}hpa</view>
+        </view>
+        <view class="column column4">
+            <view class="wave2">{{WeatherHour.wind.water_surface_image}}</view>
+            <block wx:if="{{!WeatherHour.wind.wave_height_new}}">
+                <view class="wave1">{{Fix.toFix(WeatherHour.wind.wave_height_avg)}}米</view>
+                <view class="wave2" wx:if="{{Fix.toFix(WeatherHour.wind.wave_height_avg)<Fix.toFix(WeatherHour.wind.wave_height)}}"> Max{{Fix.toFix(WeatherHour.wind.wave_height)}}米 </view>
+            </block>
+            <block wx:else>
+                <view class="wave1">{{Fix.toFix(WeatherHour.wind.wave_height_new)}}米</view>
+                <view class="wave2" wx:if="{{Fix.toFix(WeatherHour.wind.wave_height_new)<Fix.toFix(WeatherHour.wind.wave_height)}}">
+                    <block wx:if="{{WeatherHour.wind.wave_height_new<WeatherHour.wind.wave_height_avg}}"> Max{{Fix.toFix(WeatherHour.wind.wave_height_avg)}}米 </block>
+                    <block wx:if="{{WeatherHour.wind.wave_height_new>WeatherHour.wind.wave_height_avg}}"> Max{{Fix.toFix(WeatherHour.wind.wave_height)}}米 </block>
+                </view>
+            </block>
+        </view>
+        <view class="column column5">
+            <view class="tide1">{{WeatherHour.tide.state}}</view>
+            <view class="tide2">{{WeatherHour.tide.percentage}}分潮</view>
+            <view class="tide3">{{Fix.toFix(WeatherHour.tide.height)}}米</view>
+            <view class="progress" style="background-image: linear-gradient(0, #00BBFF {{WeatherHour.tide.percentage*10+'%'}}, #020505 0%);"></view>
+        </view>
+        <view class="column column6">
+            <view class="column column7">
+                <view class="wind1" style="transform:rotate({{WeatherHour.wind_direction-90}}deg);">➣</view>
+                <view class="wind2">风源</view>
+                <view class="wind3">{{WeatherHour.wind_direction}}°</view>
+            </view>
+            <view class="column column8">
+                <view class="wind3">{{WeatherHour.wind_direction_txt}}风</view>
+                <view class="wind1" wx:if="{{modeWindType==1}}">{{WeatherHour.wind_speed}}km/h</view>
+                <view class="wind1" wx:if="{{modeWindType==2}}">{{Fix.toFix(WeatherHour.wind.wind_speed_m)}}m/s</view>
+                <view class="wind2">{{WeatherHour.wind.wind_scale}}级</view>
+                <view class="progress" style="background-image: linear-gradient(to right, {{WeatherHour.wind.wind_color}} {{WeatherHour.wind.wind_scale}}0%, #020505 0%);"></view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="data_type" wx:if="{{modeType==1}}">
+    <view bindtap="bindDataType1" class="but {{dataType==1?'select':''}}" hoverClass="btn-hover">潮汐</view>
+    <view bindtap="bindDataType2" class="but {{dataType==2?'select':''}}" hoverClass="btn-hover">风浪</view>
+    <view bindtap="bindDataType3" class="but {{dataType==3?'select':''}}" hoverClass="btn-hover">温度</view>
+</view>
+<view class="newdate">
+    <scroll-view bindscroll="bindNewDateScroll" bounces="false" enhanced="true" id="newdate_scroll" scrollIntoView="D{{current_to_date}}" scrollWithAnimation="true" scrollX="true" showScrollbar="false">
+        <view class="item" wx:for="{{dateList}}">
+            <view bindtap="bindSelectDateList" class="w {{item.today}} {{item.select}}" data-date="{{item.id}}" id="D{{item.id}}">
+                <view class="week">{{item.weeks}}</view>
+                <view class="day">{{item.date}}</view>
+                <view class="earthly">{{item.earthly}}</view>
+                <view class="tide {{item.css}}">{{item.tide}}</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<view class="">
+    <button bindtap="bindPrevious" class="previous" hoverClass="btn-hover">前一天</button>
+    <button bindtap="bindNext" class="next" hoverClass="btn-hover">后一天</button>
+    <view class="picker">
+        <view bindtap="bindSelectDate" class="" hoverClass="btn-hover">{{current_date}}</view>
+        <view bindtap="bindSelectDate2" hoverClass="btn-hover" style="color: #FFF;">潮报</view>
+    </view>
+</view>
+<view class="weather" style="margin-top:10rpx;" wx:if="{{isAD}}">
+    <ad unitId="adunit-c70f2626dabccc01"></ad>
+</view>
+<view class="weather" style="margin-top:10rpx;">
+    <view class="title shadow" style="background-color:initial;">
+        <text class="date">辅助</text>
+        <text bindtap="bindAuxiliary" class="temperature ghdesc" wx:if="{{isAuxiliary}}">关闭辅助</text>
+        <text bindtap="bindAuxiliary" class="temperature ghdesc" wx:if="{{!isAuxiliary}}">打开辅助</text>
+    </view>
+</view>
+<view class="today" wx:if="{{isAuxiliary}}">
+    <view class="left" wx:if="{{isAI}}">
+        <image bindtap="bindAddrstr" src="../../images/compass-dark.png" style="transform:rotate({{rotate}}deg);"></image>
+    </view>
+    <view class="right" wx:if="{{isAI}}">
+        <view class="title">
+            <text class="column column2">涨退潮时间</text>
+            <text class="column column2">海水高度</text>
+        </view>
+        <view class="value">
+            <text bindtap="doubleClick" class="column column2" data-time="{{lastTapTime}}" data-value="{{tide.DayList.Day_Time1}} - {{Fix.toNextDate(tide.DayList.Day_Time2)}}{{tide.DayList.ready1}}">{{tide.DayList.Day_Time1}} - {{Fix.toNextDate(tide.DayList.Day_Time2)}} <text style="color:#aaaaff" wx:if="{{tide.DayList.ready1=='退潮'}}"> {{tide.DayList.ready1}}</text>
+                <text style="color:#ff8585" wx:if="{{tide.DayList.ready1=='涨潮'}}"> {{tide.DayList.ready1}}</text>
+            </text>
+            <text class="column column2">{{Fix.toFix(tide.DayList.Day_High_Tide1/1)}} ➤ {{Fix.toNextHead( Fix.toFix(tide.DayList.Day_High_Tide2/1) )}}米</text>
+        </view>
+        <view class="value">
+            <text bindtap="doubleClick" class="column column2" data-time="{{lastTapTime}}" data-value="{{tide.DayList.Day_Time2}} - {{Fix.toNextDate(tide.DayList.Day_Time3)}}{{tide.DayList.ready2}}">{{tide.DayList.Day_Time2}} - {{Fix.toNextDate(tide.DayList.Day_Time3)}} <text style="color:#aaaaff" wx:if="{{tide.DayList.ready2=='退潮'}}"> {{tide.DayList.ready2}}</text>
+                <text style="color:#ff8585" wx:if="{{tide.DayList.ready2=='涨潮'}}"> {{tide.DayList.ready2}}</text>
+            </text>
+            <text class="column column2">{{Fix.toFix(tide.DayList.Day_High_Tide2/1)}} ➤ {{Fix.toNextHead( Fix.toFix(tide.DayList.Day_High_Tide3/1) )}}米</text>
+        </view>
+        <view class="value" wx:if="{{tide.DayList.Day_Time3}}">
+            <text bindtap="doubleClick" class="column column2" data-time="{{lastTapTime}}" data-value="{{tide.DayList.Day_Time3}} - {{Fix.toNextDate(tide.DayList.Day_Time4)}}{{tide.DayList.ready3}}">{{tide.DayList.Day_Time3}} - {{Fix.toNextDate(tide.DayList.Day_Time4)}} <text style="color:#aaaaff" wx:if="{{tide.DayList.ready3=='退潮'}}"> {{tide.DayList.ready3}}</text>
+                <text style="color:#ff8585" wx:if="{{tide.DayList.ready3=='涨潮'}}"> {{tide.DayList.ready3}}</text>
+            </text>
+            <text class="column column2">{{Fix.toFix(tide.DayList.Day_High_Tide3/1)}} ➤ {{Fix.toNextHead( Fix.toFix(tide.DayList.Day_High_Tide4/1) )}}米</text>
+        </view>
+        <view class="value" wx:if="{{tide.DayList.Day_Time4}}">
+            <text bindtap="doubleClick" class="column column2" data-time="{{lastTapTime}}" data-value="{{tide.DayList.Day_Time4}} - - 23:59{{tide.DayList.ready4}}">{{tide.DayList.Day_Time4}} - 23:59 <text style="color:#aaaaff" wx:if="{{tide.DayList.ready4=='退潮'}}"> {{tide.DayList.ready4}}</text>
+                <text style="color:#ff8585" wx:if="{{tide.DayList.ready4=='涨潮'}}"> {{tide.DayList.ready4}}</text>
+            </text>
+            <text class="column column2">{{Fix.toFix(tide.DayList.Day_High_Tide4/1)}} ➤ ??米</text>
+        </view>
+    </view>
+    <view class="value2 title2">
+        <text class="column ">潮况</text>
+        <block wx:if="{{tide.DayList.Day_Time1}}">
+            <text class="column " style="color:#aaaaff" wx:if="{{tide.DayList.ready1=='涨潮'}}">干潮</text>
+            <text class="column " style="color:#ff8585" wx:if="{{tide.DayList.ready1=='退潮'}}">满潮</text>
+        </block>
+        <block wx:if="{{tide.DayList.Day_Time2}}">
+            <text class="column " style="color:#aaaaff" wx:if="{{tide.DayList.ready2=='涨潮'}}">干潮</text>
+            <text class="column " style="color:#ff8585" wx:if="{{tide.DayList.ready2=='退潮'}}">满潮</text>
+        </block>
+        <block wx:if="{{tide.DayList.Day_Time3}}">
+            <text class="column " style="color:#aaaaff" wx:if="{{tide.DayList.ready3=='涨潮'}}">干潮</text>
+            <text class="column " style="color:#ff8585" wx:if="{{tide.DayList.ready3=='退潮'}}">满潮</text>
+        </block>
+        <block wx:if="{{tide.DayList.Day_Time4}}">
+            <text class="column " style="color:#aaaaff" wx:if="{{tide.DayList.ready4=='涨潮'}}">干潮</text>
+            <text class="column " style="color:#ff8585" wx:if="{{tide.DayList.ready4=='退潮'}}">满潮</text>
+        </block>
+    </view>
+    <view class="value2">
+        <text class="column ">时间</text>
+        <text class="column " wx:if="{{tide.DayList.Day_Time1}}">{{tide.DayList.Day_Time1}}</text>
+        <text class="column " wx:if="{{tide.DayList.Day_Time2}}">{{tide.DayList.Day_Time2}}</text>
+        <text class="column " wx:if="{{tide.DayList.Day_Time3}}">{{tide.DayList.Day_Time3}}</text>
+        <text class="column " wx:if="{{tide.DayList.Day_Time4}}">{{tide.DayList.Day_Time4}}</text>
+    </view>
+    <view class="value2">
+        <text class="column ">潮高</text>
+        <text class="column " wx:if="{{tide.DayList.Day_Time1}}">{{Fix.toFix(tide.DayList.Day_High_Tide1/1)}}米</text>
+        <text class="column " wx:if="{{tide.DayList.Day_Time2}}">{{Fix.toFix(tide.DayList.Day_High_Tide2/1)}}米</text>
+        <text class="column " wx:if="{{tide.DayList.Day_Time3}}">{{Fix.toFix(tide.DayList.Day_High_Tide3/1)}}米</text>
+        <text class="column " wx:if="{{tide.DayList.Day_Time4}}">{{Fix.toFix(tide.DayList.Day_High_Tide4/1)}}米</text>
+    </view>
+    <view class="ghdesc" wx:if="{{!isAI}}">{{tide.TideDesc}}</view>
+    <block wx:if="{{isAI}}">
+        <view bindtap="doubleClick" class="ghdesc" data-time="{{lastTapTime}}" data-value="{{tide.GHDesc}}">{{tide.GHDesc}}</view>
+        <view class="ghdesc" wx:if="{{modeType==1}}">{{tide.YKDesc}}</view>
+    </block>
+</view>
+<view class="weather">
+    <view class="title shadow">
+        <text class="date">{{weather.today.key}}</text>，<text class="date">{{weather.today.skycon}}</text>
+        <view class="temperature" style="font-size:22rpx;"> 气温：{{weather.today.temperature_min}}°C~{{weather.today.temperature_max}}°C； <block wx:if="{{weather.today.water_temperature_min}}"> 水温：{{weather.today.water_temperature_min}}°C<block wx:if="{{weather.today.water_temperature_min<weather.today.water_temperature_max}}">~{{weather.today.water_temperature_max}}°C</block>
+            </block>
+        </view>
+    </view>
+    <view class="row">
+        <text class="column right">日出</text>
+        <text class="column">{{tide.DayList.Day_Sunrise}}</text>
+        <text class="column right">日落</text>
+        <text class="column">{{tide.DayList.Day_Sunset}}</text>
+        <text class="column right">日长</text>
+        <text class="column">{{tide.DayList.Day_Length}}</text>
+    </view>
+    <view class="row">
+        <text class="column right">湿度</text>
+        <text class="column column2">{{Fix.toFix(weather.today.humidity_min*100)}}% ~ {{Fix.toFix(weather.today.humidity_max*100)}}%</text>
+        <text class="column right">气压</text>
+        <text class="column column2">{{weather.today.pressure_min}}hpa ~ {{weather.today.pressure_max}}hpa</text>
+    </view>
+    <view class="row">
+        <text class="column right">辐射</text>
+        <text class="column column2">{{Fix.toFix(weather.today.dswrf_min)}} ~ {{Fix.toFix(weather.today.dswrf_max)}}</text>
+        <text class="column right">可见</text>
+        <text class="column column2">{{Fix.toFix(weather.today.visibility_min)}}km ~ {{Fix.toFix(weather.today.visibility_max)}}km</text>
+    </view>
+    <view class="row">
+        <view class="column right">
+            <view>浪高</view>
+            <view>风级</view>
+            <view>风速</view>
+        </view>
+        <view class="column column2">
+            <view>{{weather.today.wind_min.wave_height}}米 ~ {{weather.today.wind_max.wave_height}}米</view>
+            <view> {{weather.today.wind_min.wind_scale}}级 ~ {{weather.today.wind_max.wind_scale}}级 ( {{weather.today.wind_direction_min_txt}} <label wx:if="{{weather.today.wind_direction_min_txt!=weather.today.wind_direction_max_txt}}"> ,{{weather.today.wind_direction_max_txt}} </label> ) </view>
+            <view wx:if="{{modeWindType==1}}">{{weather.today.wind_speed_min}}kmh ~ {{weather.today.wind_speed_max}}kmh</view>
+            <view wx:if="{{modeWindType==2}}">{{Fix.toFix(weather.today.wind_min.wind_speed_m)}}m/s ~ {{Fix.toFix(weather.today.wind_max.wind_speed_m)}}m/s</view>
+        </view>
+        <view class="column column3 right">
+            <button bindtap="bindOpenWeather" class="previous" hoverClass="btn-hover">15天逐小时预报</button>
+        </view>
+    </view>
+</view>
+<view class="desc" wx:if="{{isAuxiliary}}">
+    <view wx:if="{{modeType==1}}">配重流速：根据潮汐推算而出，只能用于钓组配重参考。</view>
+    <view wx:if="{{modeType==1}}">潮水方向：涨潮一般是东往西，退潮则西往东；不是正东和正西。</view>
+    <view>本潮汐为天文潮位，不包括由于气象或其他因素造成的增减水变化</view>
+    <view>在特殊情况下，还应考虑台风、寒潮和洪水等因素</view>
+    <view>潮汐表数据来自国家海洋信息中心</view>
+</view>
+<view class="see">
+    <view class="column" data-id="{{item.ID}}">
+        <image src="https://www.eisk.cn/static/img/see.png"></image>
+        <text>{{Comment.toNumber(clickNumb)}}</text>
+    </view>
+    <view bindtap="bindInfoSupport" class="column">
+        <image src="{{Comment.toSupport(isSupport)}}"></image>
+        <text style="{{Comment.toSupportColor(isSupport)}}">{{Comment.toNumber(support)}}</text>
+    </view>
+</view>
+<view class="comment" wx:if="{{isComment==1}}">
+    <text class="title">留言板：</text>
+    <text bindtap="bindDelPedar" class="pedar {{Comment.toPedarHide(pedarID)}}">回复：<text>{{pedarName}}</text> (点击清除)</text>
+    <form bindsubmit="binComment">
+        <textarea class="input" name="textarea" placeholder="{{tide.TideName}}[{{tide.Date}}]{{tide.GHDesc}}选择优和好去赶海基本没有问题。曲线向上是涨潮，向下是退潮！" value="{{commentText}}"></textarea>
+        <view class="buts">
+            <view class="emote" style="display:none">
+                <image src="https://www.eisk.cn/static/img/face/0.png"></image>
+            </view>
+            <button class="but" formType="submit" hoverClass="btn-hover">回复</button>
+            <text class="desc">咨询涨潮、退潮和赶海时间请看辅助区域</text>
+        </view>
+    </form>
+    <view style="clear: both;"></view>
+    <view class="list">
+        <view class="row" wx:for="{{commentList}}">
+            <image class="head" src="{{Comment.toHeadimg(item.MemberHead)}}"></image>
+            <view class="content">
+                <view class="info">
+                    <view>
+                        <text class="name">{{item.MemberName}}</text>
+                        <text class="addrstr">{{Comment.toAddrstr(item.AddrStr)}}</text>
+                        <text class="date">{{Comment.toDate(item.PostTime)}}</text>
+                    </view>
+                    <text>{{item.Content}}</text>
+                    <view bindtap="bindOpenUrl" class="type3" data-url="{{item.Extended[0].WxUrl}}" wx:if="{{item.Type==3}}">
+                        <view class="img">
+                            <image mode="aspectFill" src="{{item.Extended[0].ImgUrl}}"></image>
+                        </view>
+                        <text class="left">{{item.Extended[0].Tile}}</text>
+                    </view>
+                    <view class="list-comment" wx:for="{{item.comment}}" wx:for-index="cellindex">
+                        <view class="row-comment">
+                            <text class="name">{{item.MemberName}}</text>
+                            <text class="date">{{Comment.toDate(item.PostTime)}}</text>
+                            <text class="comm">回复:</text> {{item.Content}} </view>
+                    </view>
+                </view>
+                <view class="buts-row">
+                    <text bindtap="bindOpenTide" class="del" data-id="{{item.SubID}}" data-value="{{item.SubTitle}}" wx:if="{{item.SubTitle}}">潮汐：{{item.SubTitle}}</text>
+                    <text bindtap="bindSelectPedarID" class="comm" data-id="{{item.ID}}" data-name="{{item.MemberName}}">回复</text>
+                    <view bindtap="bindSupport" class="support" data-id="{{item.ID}}">
+                        <image class="com_support_img" src="{{Comment.toSupport(item.IsSupport)}}"></image>
+                        <text class="com_support_span" style="{{Comment.toSupportColor(item.IsSupport)}}">{{item.Support}}</text>
+                    </view>
+                </view>
+                <view style="clear: both;"></view>
+            </view>
+        </view>
+        <button bindtap="bindComment" class="btn" hoverClass="btn-hover">加载更多评论</button>
+    </view>
+</view>
+<view class="add">
+    <image bindtap="bindOpenWeather" mode="aspectFill" src="/images/wind/{{Comment.toWindImg(weather.today.skycon)}}.png"></image>
+    <view>{{weather.today.skycon}}</view>
+</view>
+<view class="add zhuanhuan">
+    <image bindtap="bindZhuanHuan" mode="aspectFill" src="/images/menuicon/zhuanhuan3.png"></image>
+    <view wx:if="{{modeType==1}}">赶海模式</view>
+    <view wx:if="{{modeType==2}}">钓鱼模式</view>
+</view>
+<wxs module="Fix" src="fix.wxs" />
+<wxs module="Time" src="time.wxs" />
+<wxs module="Comment" src="comment.wxs" />

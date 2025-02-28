@@ -1,0 +1,115 @@
+var Comment = ({
+    toHeadimg: (function(value) {
+        if (!value) return ("");;
+        if (value.indexOf("data:image/png;base64") > -1) return (value);;
+        if (value.toLowerCase().indexOf("https://") == -1 && value.toLowerCase().indexOf("http://") == -1) return ("https://www.eisk.cn/" + value);;
+        return (value)
+    }),
+    toDate: (function(strDate) {
+        var reg = getRegExp("-", "g");
+        strDate = strDate.replace('T', ' ');
+        strDate = strDate.replace(reg, '/');
+        var date = getDate(strDate);
+        var now = getDate();
+        var l = now.getTime() - date.getTime();
+        var day = parseInt(l / (24 * 60 * 60 * 1000));
+        var hour = parseInt(l / (60 * 60 * 1000) - day * 24);
+        if (day < 1) {
+            if (hour < 1) {
+                var min = parseInt((l / (60 * 1000)) - day * 24 * 60 - hour * 60);
+                if (min < 3) return ("刚刚");;
+                return (min + "分钟前")
+            };
+            if (hour < 24) return (hour + "小时前");
+        };
+        if (day < 3) return ("昨天");;
+        if (day < 10) return (day + "天前");;
+        return (strDate.split(" ")[(0)].toString())
+    }),
+    toSupport: (function(value) {
+        if (value == 0) return ("https://www.eisk.cn/static/m/img/fabulous.png");;
+        return ("https://www.eisk.cn/static/m/img/end_fabulous.png")
+    }),
+    toSupportColor: (function(value) {
+        if (value != 0) return ("color: rgb(236, 26, 26);");;
+        return ("")
+    }),
+    toNumber: (function(value) {
+        if (value >= 10000) {
+            var v = (value / 10000).toFixed(1);
+            return (v + "w")
+        };
+        if (value >= 1000) {
+            var v = (value / 1000).toFixed(1);
+            return (v + "k")
+        };
+        return (value)
+    }),
+    toPedarHide: (function(value) {
+        if (value > 0) return ("");;
+        return ("hide")
+    }),
+    toAddrstr: (function(value) {
+        if (value) {
+            return (value)
+        } else {
+            return ("")
+        }
+    }),
+    toWindImg: (function(value) {
+        if (value) {
+            switch (value) {
+                case "晴":
+                    return ("01");
+                case "多云":
+                    return ("02");
+                case "阴":
+                    return ("03");
+                case "轻度雾霾":
+                    return ("04");
+                case "中度雾霾":
+                    return ("05");
+                case "重度雾霾":
+                    return ("06");
+                case "小雨":
+                    return ("07");
+                case "中雨":
+                    return ("08");
+                case "大雨":
+                    return ("09");
+                case "暴雨":
+                    return ("10");
+                case "雾":
+                    return ("11");
+                case "小雪":
+                    return ("12");
+                case "中雪":
+                    return ("13");
+                case "大雪":
+                    return ("14");
+                case "暴雪":
+                    return ("15");
+                case "浮尘":
+                    return ("16");
+                case "沙尘":
+                    return ("17");
+                case "大风":
+                    return ("18");
+                default:
+                    return ("01");
+            }
+        } else {
+            return ("01")
+        }
+    }),
+});
+module.exports = ({
+    toNumber: Comment.toNumber,
+    toHeadimg: Comment.toHeadimg,
+    toDate: Comment.toDate,
+    toSupport: Comment.toSupport,
+    toPedarHide: Comment.toPedarHide,
+    toSupportColor: Comment.toSupportColor,
+    toAddrstr: Comment.toAddrstr,
+    toWindImg: Comment.toWindImg,
+});

@@ -1,0 +1,19 @@
+.Container {
+    border: 1rpx dashed #aaa;
+    font-size: 30rpx;
+    margin: 0 auto;
+    padding: 30rpx 20rpx;
+    text-align: center;
+    width: 90%;
+}
+
+button {
+    margin: 10rpx;
+}
+
+.ghdesc {
+    color: #ff6a00;
+    font-size: 23rpx;
+    margin: 8rpx 0;
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+<view class="box" wx:if="{{SHOW_TOP}}">
+    <view class="arrow"></view>
+    <view bindtap="showModal" class="body">
+        <text>{{text}}</text>
+    </view>
+</view>
+<view class="modal" wx:if="{{SHOW_MODAL}}">
+    <view>
+        <text>2. 点击「添加到我的小程序」</text>
+        <view>
+            <image mode="widthFix" src="./assets/fav-2.jpg" style="width:100%;"></image>
+        </view>
+    </view>
+    <view bindtap="okHandler" class="ok-btn" hoverClass="btn-hover">
+        <view>
+            <text>我知道了！</text>
+        </view>
+    </view>
+</view>

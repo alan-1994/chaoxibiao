@@ -1,0 +1,222 @@
+.calendar {
+    box-sizing: border-box;
+    font-size: 30rpx;
+    text-align: center;
+    width: 100%;
+}
+
+.calendar-title {
+    box-sizing: border-box;
+    font-size: 35rpx;
+    line-height: 70rpx;
+    padding: 0 20rpx;
+    text-align: left;
+}
+
+.calendar-title .ctrl {
+    border-radius: 10rpx;
+    display: inline-block;
+    padding: 0 20rpx;
+}
+
+.calendar-title .item {
+    display: inline-block;
+    line-height: 50rpx;
+    vertical-align: middle;
+}
+
+.calendar-title .title {
+    min-width: 300rpx;
+    text-align: center;
+}
+
+.calendar-title .today {
+    float: right;
+    margin-top: 10rpx;
+}
+
+.calendar-week {
+    border-bottom: 1rpx solid #e0e0e0;
+    border-top: 1rpx solid #e0e0e0;
+    box-sizing: border-box;
+    display: flex;
+    font-size: 30rpx;
+    padding: 20rpx 10rpx;
+    text-align: center;
+}
+
+.calendar-week .item {
+    flex: 1;
+}
+
+.calendar-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20rpx 10rpx;
+}
+
+.calendar-container .grid {
+    display: inline-block;
+    line-height: 100%;
+    position: relative;
+    width: calc(14.28571428571429% - 2rpx);
+    z-index: 1;
+}
+
+.calendar-container .grid .w {
+    height: 100%;
+    padding: 15rpx 0 10rpx;
+    width: 100%;
+}
+
+.calendar-container .grid .day {
+    color: #646464;
+    font-size: 40rpx;
+    margin-bottom: 15rpx;
+    padding-left: 15rpx;
+    text-align: left;
+    width: 100%;
+}
+
+.calendar-container .grid .on {
+    color: #fff;
+}
+
+.calendar-container .grid .earthly {
+    color: #e0e0e0;
+    font-size: 13rpx;
+    position: absolute;
+    right: 8rpx;
+    top: 25rpx;
+}
+
+.calendar-container .grid .tide {
+    border-radius: 7rpx;
+    font-size: 18rpx;
+    margin: auto;
+    width: 88%;
+}
+
+.calendar-container .grid .da {
+    background: #c70822;
+}
+
+.calendar-container .grid .zhong {
+    background: #8b8b8b;
+}
+
+.calendar-container .grid .xiao {
+    background: #036336;
+}
+
+.calendar-container .grid .self {
+    background: #3ba7a3;
+    border: 3rpx solid #fff;
+    border-radius: 50%;
+    height: 15rpx;
+    position: absolute;
+    right: 5rpx;
+    top: 5rpx;
+    width: 15rpx;
+}
+
+.calendar-container .grid.gray {
+    color: #535353;
+}
+
+.calendar-container .grid .wrap.select {
+    background: #3ba7a3;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.calendar-x {
+    height: 110rpx;
+    padding: 20rpx 0;
+    white-space: nowrap;
+}
+
+.calendar-x .grid {
+    border-radius: 10rpx;
+    display: inline-block;
+    line-height: 100%;
+    margin-left: 20rpx;
+    position: relative;
+    text-align: center;
+    width: 100rpx;
+    z-index: 1;
+}
+
+.calendar-x .grid .w {
+    height: 100%;
+    padding: 15rpx 0 10rpx;
+    width: 100%;
+}
+
+.calendar-x .grid .day {
+    color: #646464;
+    font-size: 40rpx;
+    margin-bottom: 15rpx;
+    padding-left: 15rpx;
+    text-align: left;
+    width: 100%;
+}
+
+.calendar-x .grid .on {
+    color: #fff;
+}
+
+.calendar-x .grid .earthly {
+    color: #e0e0e0;
+    font-size: 13rpx;
+    position: absolute;
+    right: 8rpx;
+    top: 25rpx;
+}
+
+.calendar-x .grid .tide {
+    border-radius: 7rpx;
+    font-size: 18rpx;
+    margin: auto;
+    width: 88%;
+}
+
+.calendar-x .grid .da {
+    background: #c70822;
+}
+
+.calendar-x .grid .zhong {
+    background: #8b8b8b;
+}
+
+.calendar-x .grid .xiao {
+    background: #036336;
+}
+
+.calendar-x .grid:last-child {
+    margin-right: 20rpx;
+}
+
+.calendar-x .grid .self {
+    background: #3178e4;
+    border: 3rpx solid #fff;
+    border-radius: 50%;
+    height: 15rpx;
+    position: absolute;
+    right: 0rpx;
+    top: 0rpx;
+    width: 15rpx;
+}
+
+.calendar-x .grid.gray {
+    color: #ccc;
+}
+
+.calendar-x .grid .wrap.select {
+    background: #3178e4;
+    border-radius: 10rpx;
+    color: #fff;
+    margin: 0 auto;
+}

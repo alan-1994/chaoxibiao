@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "add-tips": "/Components/weplug-add-tips/index"
+    },
+    "navigationBarTitleText": "潮汐表精灵"
+}

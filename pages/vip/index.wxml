@@ -1,0 +1,21 @@
+<view class="card">
+    <view class="left">
+        <scroll-view scrollIntoView="{{toView}}" scrollWithAnimation="true" scrollY="true" style="height:100vh;">
+            <image class="qrcode" src="http://r.eisk.cn/Upload/xcx-min.png"></image>
+            <view class="association">阳江市海钓协会</view>
+        </scroll-view>
+    </view>
+    <view class="right">
+        <view class="content">
+            <view class="user_info">
+                <view class="code">ID：<text class="type">G</text>167</view>
+                <view class="date">入会：2022</view>
+                <image bindtap="bindLogin" class="head" src="{{userInfo.avatarUrl}}"></image>
+                <view class="name">{{userInfo.nickName}}</view>
+                <text class="desc">这家伙很懒什么都没有留下</text>
+                <text class="phone">电话：13421228885</text>
+            </view>
+        </view>
+        <scroll-view scrollIntoView="{{toView}}" scrollWithAnimation="true" scrollY="true" style="height:100vh;"></scroll-view>
+    </view>
+</view>

@@ -1,0 +1,110 @@
+<view id="day15">
+    <view class="container">
+        <text class="title">{{WeatherDay.AddrStr}}-天气预报</text>
+    </view>
+    <view class="container">
+        <ec-canvas canvasId="mychart-line" ec="{{ec}}" id="mychart-dom-line"></ec-canvas>
+    </view>
+    <view class="desc"> 未来{{WeatherHour.group.length}}天，逐小时天气预报。 <view class="desc2">
+            <view style="color: #FFF;">特别说明：</view>
+            <view>1.方向：（上北，下南，左西，右东）所指向是来源的方向，比如“东风”方向所指屏幕右边；</view>
+            <view>2.浪高：出于安全考虑，<text style="color:red">矶钓</text>请选择可能出现的最高数值<text style="color:red">(Max)</text>来进行参考。</view>
+            <view>3.日期：切换可以通过下面（小时数据列表）<text style="color:red;font-size: 30rpx;">左右滑动</text>切换。</view>
+            <view>4.数据仅适用于“钓鱼”、“赶海”和“旅游”参考使用。</view>
+        </view>
+    </view>
+</view>
+<swiper bindchange="bindWindChange" class="swiper-box " current="{{currentTab}}" duration="300" style="height:{{height}}px">
+    <swiper-item wx:for="{{WeatherHour.group}}" wx:for-index="groupIndex">
+        <view class="windlist" style="min-height:3000rpx;">
+            <view class="title" style="{{hourStyle}}">
+                <view class="text">
+                    <text class="date">{{WeatherHour.group[groupIndex].key}}</text>
+                    <text class="temperature">{{WeatherHour.group[groupIndex].temperature_min}}°C ~ {{WeatherHour.group[groupIndex].temperature_max}}°C</text>
+                </view>
+                <view class="description">
+                    <text wx:if="{{groupIndex==0}}">{{WeatherHour.forecast_keypoint}}</text>
+                </view>
+                <view class="column column1">时间</view>
+                <view class="column column2">温湿度</view>
+                <view class="column column3">天气</view>
+                <view class="column column4">浪</view>
+                <view class="column column5">潮汐</view>
+                <view class="column column6">风</view>
+            </view>
+            <view class="value" wx:for="{{WeatherHour.group[groupIndex].list}}" wx:for-index="listIndex">
+                <view class="column column1">
+                    <view class="hour">{{WeatherHour.group[groupIndex].list[listIndex].hour}}</view>
+                    <view class="day">{{WeatherHour.group[groupIndex].list[listIndex].day}}</view>
+                </view>
+                <view class="column column2">
+                    <view class="humidity">{{WeatherHour.group[groupIndex].list[listIndex].temperature}}°C</view>
+                    <view class="temperature">湿度{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].humidity*100)}}%</view>
+                    <view class="pressure" wx:if="{{WeatherHour.group[groupIndex].list[listIndex].water_temperature}}"> 水温{{WeatherHour.group[groupIndex].list[listIndex].water_temperature}}°C </view>
+                    <view class="pressure" wx:if="{{!WeatherHour.group[groupIndex].list[listIndex].water_temperature}}"> 辐射{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].dswrf)}} </view>
+                </view>
+                <view class="column column3">
+                    <view class="skycon">{{WeatherHour.group[groupIndex].list[listIndex].skycon}}</view>
+                    <view class="visibility">可见{{WeatherHour.group[groupIndex].list[listIndex].visibility}}km</view>
+                    <view class="dswrf">气压{{WeatherHour.group[groupIndex].list[listIndex].pressure}}hpa</view>
+                </view>
+                <view class="column column4">
+                    <view class="wave2">{{WeatherHour.group[groupIndex].list[listIndex].wind.water_surface_image}}</view>
+                    <block wx:if="{{!WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_new}}">
+                        <view class="wave1">{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_avg)}}米</view>
+                        <view class="wave2" wx:if="{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_avg)<Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height)}}"> Max{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height)}}米 </view>
+                    </block>
+                    <block wx:if="{{WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_new}}">
+                        <view class="wave1">{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_new)}}米</view>
+                        <view class="wave2" wx:if="{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_new)<Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height)}}">
+                            <block wx:if="{{WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_new<WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_avg}}"> Max{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_avg)}}米 </block>
+                            <block wx:if="{{WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_new>WeatherHour.group[groupIndex].list[listIndex].wind.wave_height_avg}}"> Max{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wave_height)}}米 </block>
+                        </view>
+                    </block>
+                </view>
+                <view class="column column5">
+                    <view class="tide1">{{WeatherHour.group[groupIndex].list[listIndex].tide.state}}</view>
+                    <view class="tide2">{{WeatherHour.group[groupIndex].list[listIndex].tide.percentage}}分潮</view>
+                    <view class="tide3">{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].tide.height/100)}}米</view>
+                    <view class="progress" style="background-image: linear-gradient(0, #00BBFF {{WeatherHour.group[groupIndex].list[listIndex].tide.percentage*10}}%, #020505 0%);"></view>
+                </view>
+                <view class="column column6">
+                    <view class="column column7">
+                        <view class="wind1" style="transform:rotate({{WeatherHour.group[groupIndex].list[listIndex].wind_direction-90}}deg);">➣</view>
+                        <view class="wind2">风源</view>
+                        <view class="wind3">{{WeatherHour.group[groupIndex].list[listIndex].wind_direction}}°</view>
+                    </view>
+                    <view class="column column8">
+                        <view class="wind3">{{WeatherHour.group[groupIndex].list[listIndex].wind_direction_txt}}风</view>
+                        <view class="wind1" wx:if="{{modeWindType==1}}">{{WeatherHour.group[groupIndex].list[listIndex].wind_speed}}km/h</view>
+                        <view class="wind1" wx:if="{{modeWindType==2}}">{{Fix.toFix(WeatherHour.group[groupIndex].list[listIndex].wind.wind_speed_m)}}m/s</view>
+                        <view class="wind2">{{WeatherHour.group[groupIndex].list[listIndex].wind.wind_scale}}级</view>
+                        <view class="progress" style="background-image: linear-gradient(to right, {{WeatherHour.group[groupIndex].list[listIndex].wind.wind_color}} {{WeatherHour.group[groupIndex].list[listIndex].wind.wind_scale}}0%, #020505 0%);"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </swiper-item>
+</swiper>
+<view style="height:200rpx;font-size: 20rpx;color: #425564;"> 数据来源：国家海洋信息中心、中国气象科学数据共享服务网、台湾地区交通部中央气象局、美国大气与海洋管理局、日本气象厅
+</view>
+<view class="calendar" style="{{calendar}}">
+    <view class="title"> 请选择日期 <image bindtap="bindCalendarClost" mode="aspectFill" src="/images/menuicon/add.png"></image>
+    </view>
+    <Calendar bind:select="select" defaultValue="{{date}}" end="14" id="Calendar" start="-1"></Calendar>
+</view>
+<view class="newdate">
+    <scroll-view bindscroll="bindNewDateScroll" bounces="false" enhanced="true" id="newdate_scroll" scrollIntoView="D{{current_to_date}}" scrollWithAnimation="true" scrollX="true" showScrollbar="false">
+        <view class="item" wx:for="{{dateList}}">
+            <view bindtap="bindSelectDateList" class="w {{item.today}} {{item.select}}" data-date="{{item.id}}" data-tag="{{item.tag}}" id="D{{item.id}}">
+                <view class="week">{{item.weeks}}</view>
+                <view class="day">{{item.date}}</view>
+                <view class="earthly">{{item.earthly}}</view>
+                <view class="tide {{item.css}}">{{item.tide}}</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<wxs module="Fix" src="../tide/fix.wxs" />
+<wxs module="Time" src="../tide/time.wxs" />
+<wxs module="Comment" src="../tide/comment.wxs" />

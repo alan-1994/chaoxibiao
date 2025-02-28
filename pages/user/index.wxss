@@ -1,0 +1,64 @@
+.user_back {
+    width: 100%;
+}
+
+.user_info {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 180rpx;
+    width: 100%;
+}
+
+.user_info .head {
+    border: 10rpx solid hsla(0,0%,100%,.6);
+    border-radius: 100%;
+    height: 120rpx;
+    width: 120rpx;
+}
+
+.addrstr {
+    color: #fff;
+    font-size: 22rpx;
+    position: absolute;
+    right: 2px;
+    top: 443rpx;
+}
+
+.user_info .name {
+    font-size: 30rpx;
+}
+
+.desc,.user_info .name {
+    color: #fff;
+    text-shadow: 2rpx 2rpx 2rpx 5rpx #555;
+}
+
+.desc {
+    font-size: 20rpx;
+    text-align: right;
+}
+
+.tdesc {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.btn,button {
+    font-size: 28rpx;
+    margin: 20rpx;
+}
+
+.btn {
+    background-color: #1f5b59;
+    color: #fff;
+}
+
+.memberid {
+    font-size: 28rpx;
+    left: 2px;
+    text-shadow: 2rpx 4rpx 2rpx #000;
+    width: 200rpx;
+}

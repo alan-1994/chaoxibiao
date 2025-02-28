@@ -1,0 +1,71 @@
+map {
+    height: 100vh;
+    width: 100%;
+}
+
+.cover-image {
+    bottom: 160rpx;
+    height: 80rpx;
+    position: fixed;
+    right: 15rpx;
+    width: 80rpx;
+}
+
+.search {
+    bottom: 260rpx;
+}
+
+.add {
+    bottom: 360rpx;
+}
+
+.map {
+    text-align: center;
+    top: 30rpx;
+}
+
+.map .img {
+    height: 26rpx;
+    width: 80rpx;
+}
+
+.map .txt {
+    color: red;
+    font-size: 20rpx;
+    margin-top: 13rpx;
+}
+
+.position {
+    border: 0;
+    bottom: 10rpx;
+    color: #ff6a00;
+    font-size: 27rpx;
+    height: 130rpx;
+    left: 10%;
+    text-align: center;
+    text-shadow: 2rpx 2rpx 5rpx #000;
+    width: 80%;
+}
+
+.position .but {
+    background: #1f5b59;
+    color: #fff;
+    font-size: 25rpx;
+    margin-bottom: 10rpx;
+    text-align: center;
+    width: 250rpx;
+}
+
+.btn-hover {
+    background-color: #3ba7a3;
+}
+
+.img-map {
+    height: 54rpx;
+    left: 50%;
+    opacity: .7;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 54rpx;
+}

@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "ec-canvas": "../../ec-canvas/ec-canvas"
+    },
+    "navigationBarTitleText": "赶海潮汐日报"
+}

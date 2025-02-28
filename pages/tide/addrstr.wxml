@@ -1,0 +1,8 @@
+<scroll-view scrollIntoView="{{toView}}" scrollWithAnimation="true" scrollY="true" style="height:100vh;">
+    <view class="row">
+        <view data-id="0">所有港口：</view>
+        <view class="addrstr" wx:for="{{AddrStr}}" wx:for-index="cellindex">
+            <navigator class="but" hoverClass="navigator-hover" url="/pages/tide/index?id={{item.ID}}"> {{item.AddrStr_Province}}-{{item.AddrStr_City}}-{{item.AddrStr_Name}} </navigator>
+        </view>
+    </view>
+</scroll-view>

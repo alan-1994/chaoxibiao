@@ -1,0 +1,67 @@
+.user_back {
+    height: 350rpx;
+    width: 100%;
+}
+
+.user_info {
+    position: absolute;
+    right: 10rpx;
+    text-align: center;
+    top: 200rpx;
+    width: 100rpx;
+}
+
+.user_info .head {
+    border: 3rpx solid hsla(0,0%,100%,.6);
+    border-radius: 100%;
+    height: 80rpx;
+    width: 80rpx;
+}
+
+.user_info .name {
+    color: #fff;
+    font-size: 20rpx;
+    text-shadow: 2rpx 2rpx 2rpx 5rpx #555;
+}
+
+.sort_title {
+    color: #fff;
+    font-size: 20rpx;
+    left: 10rpx;
+    position: absolute;
+    top: 320rpx;
+}
+
+.sort_title text {
+    color: #ff6a00;
+    margin-left: 10rpx;
+}
+
+.article {
+    padding: 20rpx 10px;
+}
+
+.article .title {
+    margin: 10rpx;
+    text-align: center;
+}
+
+.article .desc {
+    color: #aaa;
+    font-size: 28rpx;
+}
+
+.article .extend {
+    margin: 20rpx 10rpx;
+}
+
+.article .extend .btn {
+    background-color: #1f5b59;
+    color: #fff;
+    font-size: 28rpx;
+    margin: 20rpx;
+}
+
+.btn-hover {
+    background-color: #3ba7a3;
+}

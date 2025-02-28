@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "Calendar": "../../Components/calendar/calendar"
+    },
+    "navigationBarTitleText": "潮汐表-日期选择"
+}

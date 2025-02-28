@@ -1,0 +1,19 @@
+<map showLocation bindcontroltap="controltap" bindmarkertap="bindMarkertap" bindregionchange="bindRegionchange" circles="{{circles}}" enableSatellite="{{isMap}}" id="map" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" scale="{{scale}}" showCompass="true">
+    <cover-image class="img-map" src="/images/menuicon/centre.png"></cover-image>
+    <cover-image bindtap="bindTapPosition" class="cover-image " src="/images/menuicon/position.png"></cover-image>
+    <cover-image bindtap="bindTapSearch" class="cover-image search" src="/images/menuicon/search.png"></cover-image>
+    <cover-image bindtap="bindTapAdd" class="cover-image add" src="/images/menuicon/addmap.png"></cover-image>
+    <cover-view bindtap="bindTapMap" class="cover-image map">
+        <cover-image class="img" src="/images/menuicon/guan.png" wx:if="{{!isMap}}"></cover-image>
+        <cover-image class="img" src="/images/menuicon/kai.png" wx:if="{{isMap}}"></cover-image>
+        <cover-view class="txt">卫星地图</cover-view>
+    </cover-view>
+    <cover-view class="cover-image position">
+        <cover-view style="width: 90%;margin:AUTO;">
+            <button bindtap="bindOpenPosition" class="but" hoverClass="btn-hover" style="padding:0px;float: left;">查看✛位置潮汐</button>
+            <button bindtap="bindTapAdd" class="but" hoverClass="btn-hover" style="padding:0px;float:right;background: #3a5679;">创建✛位置潮汐</button>
+        </cover-view>
+        <cover-view wx:if="{{isAdmin}}">✛坐标[{{latitude}},{{longitude}}]</cover-view>
+        <cover-view>请根据目的地选最近的潮汐点，或创建自己的潮汐点</cover-view>
+    </cover-view>
+</map>

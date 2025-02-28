@@ -1,0 +1,36 @@
+var Time = ({
+    toHour: (function(value) {
+        var d = value.split("T")[(1)];
+        return (Number)(d.split(":")[(0)])
+    }),
+    toWeek: (function(value) {
+        if (!value) return ("");;
+        var d = getDate(value.split("T")[(0)]).getDay();
+        switch (d) {
+            case 1:
+                return ('星期一');
+            case 2:
+                return ('星期二');
+            case 3:
+                return ('星期三');
+            case 4:
+                return ('星期四');
+            case 5:
+                return ('星期五');
+            case 6:
+                return ('星期六');
+            default:
+                return ('星期日');
+        }
+    }),
+    toDay: (function(value) {
+        var d = value.split("T")[(0)];
+        var m = d.split("-");
+        return (Number)(m[(1)]) + "-" + Number(m[(2)])
+    }),
+});
+module.exports = ({
+    toHour: Time.toHour,
+    toWeek: Time.toWeek,
+    toDay: Time.toDay,
+});

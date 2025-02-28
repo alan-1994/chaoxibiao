@@ -1,0 +1,56 @@
+<view id="day15">
+    <view class="container">
+        <ec-canvas canvasId="mychart-line" ec="{{ec}}" id="mychart-dom-line"></ec-canvas>
+    </view>
+    <view class="desc">
+        <view class="desc2">
+            <view style="color: #FFF;">特别说明：</view>
+            <view> 释：未来{{weather.list.length}}天【{{weather.AddrStr}}】潮汐和天气情况简报，包含了大潮、中潮、小潮、推荐赶海时间以及天气情况！ </view>
+            <view> 赶海尽量选择红色大潮日，评分越高赶海越简单，100分满分！ </view>
+            <view> 分析数据来源国家海洋信息中心，仅供参考，需要结合实际情况，注意潮水升高，切勿下海 </view>
+            <view bindtap="bindOpenTide" style="text-align: right;color: #ff6a00;"> (旧版潮汐入口) </view>
+        </view>
+    </view>
+</view>
+<view class="calendarlist {{item.weekDay[1]}}" wx:for="{{weather.list}}">
+    <view class="titledate">
+        <text class="date" style="{{item.tideType[2]}}">{{item.date}}</text>
+        <text class="lunarDay" style="{{item.tideType[2]}}">{{item.lunarDay}}</text>
+        <text class="week" style="{{item.tideType[2]}}">{{item.weekDay[0]}}</text>
+        <text class="tide" style="{{item.tideType[2]}}">{{item.tideType[0]}}</text>
+        <text class="tide" style="{{item.tideType[3]}}">({{item.tideType[1]}})</text>
+        <view class="recommend"> 赶海推荐： <text style="{{item.GHDescPJ[1]}}">{{item.GHDescPJ[0]}}</text>
+        </view>
+    </view>
+    <view class="title">
+        <view class="column column1">天气</view>
+        <view class="column column2">温度</view>
+        <view class="column column3">湿度</view>
+        <view class="column column4">气压</view>
+        <view class="column column5">可见度</view>
+        <view class="column column9">{{item.wind_direction_txt}}风（{{item.wind.wind_scale}}级）</view>
+    </view>
+    <view class="value">
+        <view class="column column1">{{item.skycon}}</view>
+        <view class="column column2">{{item.temperature}}°C</view>
+        <view class="column column3">{{Fix.toFix(item.humidity*100)}}%</view>
+        <view class="column column4">{{item.pressure}}hpa</view>
+        <view class="column column5">{{item.visibility}}km</view>
+        <view class="column column9" wx:if="{{modeWindType==1}}">{{Fix.toFix(item.wind.wind_speed_km)}}km/h</view>
+        <view class="column column9" wx:if="{{modeWindType==2}}">{{Fix.toFix(item.wind.wind_speed_m)}}m/s</view>
+    </view>
+    <view class="desc">
+        <view class="title">赶海时间：</view>
+        <view class="value" wx:for="{{item.GHDesc}}" wx:for-index="GHDescIndex">
+            <text style="{{item.pj[1]}}">{{GHDescIndex+1}}：</text>
+            <text style="{{item.pj[1]}}">{{item.desc}}（min≈{{Fix.toFix(item.h/100)}}米）</text>
+            <view class="referee">评分：<text style="{{item.pj[1]}}">{{item.pf}}</text>简评：<text style="{{item.pj[1]}}">{{item.pj[0]}}</text>
+            </view>
+        </view>
+        <view class="title">最佳鱼口： <text style="color: rgb(155, 154, 154);" wx:for="{{item.YKDesc}}" wx:for-index="YKDescIndex">{{item}}</text>
+        </view>
+    </view>
+</view>
+<wxs module="Fix" src="fix.wxs" />
+<wxs module="Time" src="time.wxs" />
+<wxs module="Comment" src="comment.wxs" />

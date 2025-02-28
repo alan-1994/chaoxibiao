@@ -1,0 +1,38 @@
+<scroll-view id="scroll" scrollY="true">
+    <form bindsubmit="bindSave">
+        <view class="container"></view>
+        <view class="container">
+            <text class="title">{{Title}}</text>
+            <text class="desc">
+    1.添加的潮汐位置只有自己才能查看
+    2.不能修官方的潮汐数据，可以在原位置添加一个新的。
+    3.所添加的潮汐位置是经过电脑计算的，不一定准确，有需要的可以拖动修正。
+    4.不用找，只能通过该页面添加、修改和删除。
+    </text>
+        </view>
+        <view class="editContainer">
+            <view wx:if="{{isAdmin}}">
+                <label> 添加到记录点：</label>
+                <switch bindchange="bindIsSys" checked="{{isSys}}"></switch>
+            </view>
+            <label>涨潮时间调整（分钟，负为快，正为慢）</label>
+            <slider showValue bindchange="bindRetreat" max="120" min="-120" name="Rise_Gap" step="1" value="{{0-AI_Rise_Gap+Rise_Gap}}"></slider>
+            <label>退潮时间调整（分钟，负为快，正为慢）</label>
+            <slider showValue bindchange="bindRise" max="120" min="-120" name="Retreat_Gap" step="1" value="{{0-AI_Retreat_Gap+Retreat_Gap}}"></slider>
+            <label>海水高度调整（厘米，负为降低，正为增高）</label>
+            <slider showValue bindchange="bindHeight" max="100" min="-100" name="WaterLevel" step="1" value="{{0-AI_WaterLevel+WaterLevel}}"></slider>
+            <label>名称位置<label id="location">坐标：{{location.longitude}},{{location.latitude}}</label>
+            </label>
+            <input name="AddrStr_Name" placeholder="请输入位置名称，必须的！" value="{{AddrStr_Name}}"></input>
+            <input name="AddrStr_City" placeholder="请输入位置所在城市，必须的！" value="{{AddrStr_City}}"></input>
+            <input name="AddrStr_Province" placeholder="请输入位置所在省份，必须的！" value="{{AddrStr_Province}}"></input>
+            <input name="Longitude" style="display:none;" value="{{location.longitude}}"></input>
+            <input name="Latitude" style="display:none;" value="{{location.latitude}}"></input>
+        </view>
+        <view class="buts">
+            <button bindtap="bindPosition" class="btn" hoverClass="btn-hover">标记位置</button>
+            <button formType="submit">保存</button>
+            <button bindtap="bindDel" class="btn" hoverClass="btn-hover">删除</button>
+        </view>
+    </form>
+</scroll-view>

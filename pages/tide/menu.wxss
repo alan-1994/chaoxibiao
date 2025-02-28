@@ -1,0 +1,149 @@
+.btn-hover {
+    background-color: #3ba7a3;
+}
+
+.position {
+    border-radius: 40rpx;
+    height: calc(100vh - 90rpx);
+    margin-top: 10rpx;
+    overflow: hidden;
+    padding: 0 4rpx;
+    position: relative;
+}
+
+.position .province {
+    display: inline-block;
+    height: 100vh;
+    vertical-align: top;
+    width: 170rpx;
+}
+
+.position .province .row {
+    background: #1f5b59;
+    font-size: 30rpx;
+    margin: 4rpx;
+    padding: 15rpx 0;
+    text-align: center;
+}
+
+.position .province .select {
+    background: #194241;
+}
+
+.position .city {
+    display: inline-block;
+    margin: 4rpx 0;
+    vertical-align: top;
+    width: calc(100% - 170rpx);
+}
+
+.position .city .row {
+    border-bottom: 2rpx solid #1f5b59;
+    font-size: 30rpx;
+    padding: 10rpx 10rpx 0;
+}
+
+.position .city .row .addrstr {
+    margin: 15rpx 0rpx;
+    position: relative;
+}
+
+.position .city .row .addrstr .but {
+    background: #1f5b59;
+    color: #fff;
+    display: inline-block;
+    font-size: 25rpx;
+    margin: 5rpx 10rpx;
+    padding: 0rpx 15rpx;
+}
+
+.position .city .row .addrstr .edit {
+    background: #143a39;
+    padding: 0rpx 15rpx;
+    position: absolute;
+    right: 5rpx;
+    top: 2rpx;
+}
+
+.position .city .row .addrstr .but .txt_city,.position .city .row .addrstr .but .txt_province {
+    color: #aaa;
+    font-size: 22rpx;
+}
+
+.position .city .row .addrstr .but .txt_dstance {
+    color: #ebc7c7;
+    font-size: 22rpx;
+}
+
+.but_text {
+    color: #ff6a00;
+    float: right;
+    font-size: 32rpx;
+    margin: -8rpx 10rpx 15rpx;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.ModeType {
+    background-color: rgba(0,0,0,.8);
+    display: none;
+    height: 100vh;
+    top: 0;
+}
+
+.ModeType,.ModeType .content {
+    left: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.ModeType .content {
+    background-color: rgba(0,0,0,.5);
+    border-radius: 15rpx;
+    font-size: 28rpx;
+    text-align: center;
+    top: 200rpx;
+}
+
+.ModeType .content .model {
+    color: #ee6363;
+    font-size: 30rpx;
+    margin-top: 20rpx;
+}
+
+.ModeType .content .configure {
+    color: #c4c4c4;
+    font-size: 22rpx;
+    margin-bottom: 20rpx;
+}
+
+.ModeType .content image {
+    height: 130rpx;
+    width: 130rpx;
+}
+
+.ModeType .content .title {
+    margin: 20rpx 0;
+}
+
+.ModeType .content .desc {
+    color: #868686;
+    font-size: 22rpx;
+    margin: 10rpx 15rpx;
+}
+
+.ModeType .content .left {
+    border: 1rpx solid #1f5b59;
+}
+
+.ModeType .content .left,.ModeType .content .right {
+    display: inline-block;
+    margin: 20rpx 0;
+    padding: 20rpx 0;
+    vertical-align: top;
+    width: 49%;
+}
+
+.ModeType .content .right {
+    border: 1rpx solid transparent;
+}

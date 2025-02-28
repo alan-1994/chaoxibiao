@@ -1,0 +1,42 @@
+.top_menu {
+    padding: 0 20rpx;
+}
+
+.top_menu .column {
+    color: #bebebe;
+    font-size: 30rpx;
+    margin: 0 10rpx;
+}
+
+.add {
+    bottom: 30rpx;
+    position: fixed;
+    right: 30rpx;
+}
+
+.add image {
+    animation: rotatefresh 5s ease infinite;
+    border-radius: 100rpx;
+    height: 90rpx;
+    width: 90rpx;
+}
+
+@-webkit-keyframes rotatefresh {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes rotatefresh {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}

@@ -1,0 +1,72 @@
+.swiperContainer {
+    position: relative;
+}
+
+.img {
+    width: 100%;
+}
+
+.imageCount {
+    background-color: rgba(0,0,0,.4);
+    border-radius: 50%;
+    bottom: 20rpx;
+    color: #fff;
+    font-size: 22rpx;
+    height: 60rpx;
+    line-height: 58rpx;
+    position: absolute;
+    right: 26rpx;
+    text-align: center;
+    width: 70rpx;
+}
+
+.Container {
+    margin: 0 3%;
+}
+
+.img-swiper {
+    background-color: #000;
+    text-align: center;
+    width: 100%;
+}
+
+.img-swiper image {
+    height: 460rpx;
+    width: 100%;
+}
+
+.title {
+    font-size: 34rpx;
+    margin: 5rpx;
+}
+
+.title,.title2 {
+    text-align: center;
+}
+
+.title2 {
+    word-wrap: break-word;
+    color: #858585;
+    font-size: 22rpx;
+}
+
+.desc,.type .column {
+    font-size: 24rpx;
+}
+
+.type .column {
+    color: #cecece;
+    display: inline-block;
+    width: 50%;
+}
+
+.desc {
+    color: #f36;
+    font-weight: 700;
+    margin-top: 20rpx;
+}
+
+.desc text {
+    color: #c4c3c3;
+    font-weight: 400;
+}

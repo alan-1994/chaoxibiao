@@ -1,0 +1,33 @@
+.row {
+    border-bottom: 2rpx solid #1f5b59;
+    font-size: 30rpx;
+    padding: 10rpx 10rpx 0;
+}
+
+.row .addrstr {
+    margin: 15rpx 0rpx;
+}
+
+.row .addrstr .but {
+    color: #fff;
+    display: inline-block;
+    font-size: 25rpx;
+    margin: 5rpx 10rpx;
+    padding: 0rpx 15rpx;
+}
+
+.row .addrstr .edit {
+    background: #143a39;
+    float: right;
+    padding: 0rpx 15rpx;
+}
+
+.row .addrstr .but .txt_city,.row .addrstr .but .txt_province {
+    color: #aaa;
+    font-size: 22rpx;
+}
+
+.row .addrstr .but .txt_dstance {
+    color: #ebc7c7;
+    font-size: 22rpx;
+}

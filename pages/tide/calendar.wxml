@@ -1,0 +1,56 @@
+<Calendar bind:select="select" id="Calendar"></Calendar>
+<view class="windlist" style="padding-bottom:0;" wx:if="{{weather.key}}">
+    <view class="title">
+        <view class="column column2">温湿度</view>
+        <view class="column column3">天气</view>
+        <view class="column column4">浪</view>
+        <view class="column column9">风</view>
+        <view class="column column9">潮汐</view>
+    </view>
+    <view class="value">
+        <view class="column column2">
+            <view class="humidity">{{weather.temperature}}°C</view>
+            <view class="temperature">湿度{{Fix.toFix(weather.humidity*100)}}%</view>
+            <view class="pressure" wx:if="{{!weather.water_temperature}}">辐射{{Fix.toFix(weather.dswrf)}}</view>
+            <view class="pressure" wx:if="{{weather.water_temperature}}">水温{{Fix.toFix(weather.water_temperature)}}°C</view>
+        </view>
+        <view class="column column3">
+            <view class="skycon">{{weather.skycon}}</view>
+            <view class="visibility">可见{{weather.visibility}}km</view>
+            <view class="dswrf">气压{{weather.pressure}}hpa</view>
+        </view>
+        <view class="column column4">
+            <view class="wave2">{{weather.wind.water_surface_image}}</view>
+            <view class="wave1">{{Fix.toFix(weather.wind.wave_height_avg)}}米</view>
+            <view class="wave2" wx:if="{{Fix.toFix(weather.wind.wave_height_avg)<Fix.toFix(weather.wind.wave_height)}}"> Max{{Fix.toFix(weather.wind.wave_height)}}米 </view>
+        </view>
+        <view class="column column9">
+            <view class="column column8">
+                <view class="wind3">{{weather.wind_direction_txt}}风</view>
+                <view class="wind1" wx:if="{{modeWindType==1}}">{{weather.wind_speed}}km/h</view>
+                <view class="wind1" wx:if="{{modeWindType==2}}">{{Fix.toFix(weather.wind.wind_speed_m)}}m/s</view>
+                <view class="wind2">{{weather.wind.wind_scale}}级</view>
+            </view>
+        </view>
+        <view class="column column9">
+            <view class="tide"> {{weather.tide.Day_Time1}} <text style="color:#aaaaff" wx:if="{{weather.tide.State1=='干潮'}}">干潮</text>
+                <text style="color:#ff8585" wx:if="{{weather.tide.State1=='满潮'}}">满潮</text> {{Fix.toFix(weather.tide.Day_High_Tide1/100)}}米 </view>
+            <view class="tide" wx:if="{{weather.tide.Day_High_Tide2}}"> {{weather.tide.Day_Time2}} <text style="color:#aaaaff" wx:if="{{weather.tide.State2=='干潮'}}">干潮</text>
+                <text style="color:#ff8585" wx:if="{{weather.tide.State2=='满潮'}}">满潮</text> {{Fix.toFix(weather.tide.Day_High_Tide2/100)}}米 </view>
+            <view class="tide" wx:if="{{weather.tide.Day_High_Tide3}}"> {{weather.tide.Day_Time3}} <text style="color:#aaaaff" wx:if="{{weather.tide.State3=='干潮'}}">干潮</text>
+                <text style="color:#ff8585" wx:if="{{weather.tide.State3=='满潮'}}">满潮</text> {{Fix.toFix(weather.tide.Day_High_Tide3/100)}}米 </view>
+            <view class="tide" wx:if="{{weather.tide.Day_High_Tide4}}"> {{weather.tide.Day_Time4}} <text style="color:#aaaaff" wx:if="{{weather.tide.State4=='干潮'}}">干潮</text>
+                <text style="color:#ff8585" wx:if="{{weather.tide.State4=='满潮'}}">满潮</text> {{Fix.toFix(weather.tide.Day_High_Tide4/100)}}米 </view>
+        </view>
+    </view>
+    <view wx:if="{{weather.key}}">
+        <view class="ghdesc">{{GHDesc}}</view>
+        <view class="ghdesc">{{YKDesc}}</view>
+    </view>
+</view>
+<view class="Container">
+    <text>请选择日期</text>
+    <view>{{selectVal}}</view>
+    <button bindtap="bindOk" type="default">确定</button>
+</view>
+<wxs module="Fix" src="fix.wxs" />

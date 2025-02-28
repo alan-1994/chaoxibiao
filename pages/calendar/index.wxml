@@ -1,0 +1,18 @@
+<Calendar bind:select="select" id="Calendar"></Calendar>
+<view class="Container">
+    <text>已选择日期:{{selectVal}}</text>
+</view>
+<view class="ghdesc">注：活讯钓鱼适宜,大潮赶海适宜</view>
+<view class="ghdesc">活汛死讯只是大潮小潮的又一种简易区分法</view>
+<view class="nearby-container">
+    <text class="nearby">我的:</text>
+    <text bindtap="bindSelectMy" class="nearby-name" data-id="{{item.ID}}" wx:for="{{createAddrStr}}">
+    {{item.AddrStr_Name}}
+    </text>
+</view>
+<view class="nearby-container" style="margin-bottom:100rpx;">
+    <text class="nearby">附近:</text>
+    <text bindtap="bindSelectNearby" class="nearby-name" data-id="{{item.ID}}" wx:for="{{nearbyAddrStr}}">{{item.AddrStr_Name}}<text class="nearby-gl">[{{Fix.toFix(item.Distance/1000)}}km]</text>
+    </text>
+</view>
+<wxs module="Fix" src="../tide/fix.wxs" />

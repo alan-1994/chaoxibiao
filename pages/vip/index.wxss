@@ -1,0 +1,95 @@
+page {
+    background-color: #000;
+    color: #fff;
+}
+
+.card {
+    height: 100vh;
+    overflow: hidden;
+    padding: 0 4rpx;
+    position: relative;
+}
+
+.card .left {
+    background-color: #fff;
+    display: inline-block;
+    height: 100vh;
+    vertical-align: top;
+    width: 200rpx;
+}
+
+.card .left .qrcode {
+    height: 180rpx;
+    margin: 12rpx 10rpx;
+    width: 180rpx;
+}
+
+.card .left .association {
+    color: #000;
+    font-size: 55rpx;
+    margin: auto;
+    text-align: center;
+    width: 55rpx;
+}
+
+.card .right {
+    display: inline-block;
+    margin: 4rpx 0;
+    vertical-align: top;
+    width: calc(100% - 200rpx);
+}
+
+.card .right .content {
+    height: 400rpx;
+    position: relative;
+}
+
+.card .right .content .user_info {
+    text-align: center;
+    width: 100%;
+}
+
+.card .right .content .user_info .head {
+    border: 1rpx solid hsla(0,0%,100%,.6);
+    border-radius: 20rpx;
+    height: 150rpx;
+    margin-top: 80rpx;
+    width: 150rpx;
+}
+
+.card .right .content .user_info .code,.card .right .content .user_info .name {
+    color: #fff;
+    font-size: 30rpx;
+    text-shadow: 2rpx 2rpx 2rpx 5rpx #555;
+}
+
+.card .right .content .user_info .code {
+    left: 10rpx;
+    position: absolute;
+    top: 10rpx;
+}
+
+.card .right .content .user_info .code .type {
+    color: #e66b6b;
+    margin-right: 5rpx;
+}
+
+.card .right .content .user_info .date {
+    color: #fff;
+    font-size: 22rpx;
+    position: absolute;
+    right: 10rpx;
+    text-shadow: 2rpx 2rpx 2rpx 5rpx #555;
+    top: 10rpx;
+}
+
+.card .right .content .user_info .desc {
+    font-size: 22rpx;
+}
+
+.card .right .content .user_info .phone {
+    bottom: 10rpx;
+    font-size: 22rpx;
+    left: 10rpx;
+    position: absolute;
+}

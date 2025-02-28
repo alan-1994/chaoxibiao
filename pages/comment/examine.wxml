@@ -1,0 +1,23 @@
+<scroll-view id="scroll" scrollY="true">
+    <view class="comment">
+        <text class="title">待审核留言：</text>
+        <view style="clear: both;"></view>
+        <view class="list">
+            <view class="row" wx:for="{{commentList}}">
+                <image class="head" src="{{Comment.toHeadimg(item.MemberHead)}}"></image>
+                <view class="content">
+                    <view class="info">
+                        <view>
+                            <text class="name">{{item.MemberName}}</text>
+                            <text class="date">{{Comment.toDate(item.PostTime)}}</text>
+                        </view> {{item.Content}} </view>
+                    <view class="buts-row">
+                        <text bindtap="bindAdopt" class="comm" data-id="{{item.ID}}" data-name="{{item.MemberName}}">通过</text>
+                    </view>
+                    <view style="clear: both;"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<wxs module="Comment" src="../tide/comment.wxs" />

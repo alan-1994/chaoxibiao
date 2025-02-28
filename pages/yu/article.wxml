@@ -1,0 +1,60 @@
+<view class="swiperContainer">
+    <swiper autoplay="{{autoplay}}" bindchange="swiperChange" class="swiper-box" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}" style="height:470rpx">
+        <swiper-item wx:for="{{activity.ImgList}}" wx:for-index="ImgIndex">
+            <view class="img-swiper">
+                <image mode="aspectFit" src="{{item.img}}"></image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="imageCount">{{current+1}}/{{activity.ImgList.length}}</view>
+</view>
+<view class="Container">
+    <view class="title">{{activity.NameCN}}</view>
+    <view class="title">{{activity.NameEN}}</view>
+    <view class="title2">
+        <block wx:for="{{activity.AnotherNameAll}}">{{item.Name}},</block>
+    </view>
+    <view class="type">
+        <text class="column">纲：<text>{{activity.Gang}}</text>
+        </text>
+        <text class="column">目：<text>{{activity.Mu}}</text>
+        </text>
+        <text class="column">科：<text>{{activity.Ke}}</text>
+        </text>
+        <text class="column">属：<text>{{activity.Shu}}</text>
+        </text>
+    </view>
+    <view class="desc" wx:if="{{activity.Introduction}}">
+        <view>简介：</view>
+        <text>{{activity.Introduction}}</text>
+    </view>
+    <view class="desc" wx:if="{{activity.Features}}">
+        <view>形态特征：</view>
+        <text>{{activity.Features}}</text>
+    </view>
+    <view class="desc" wx:if="{{activity.Characteristic}}">
+        <view>特性：大小/重量/年龄：</view>
+        <text>{{activity.Characteristic}}</text>
+    </view>
+    <view class="desc" wx:if="{{activity.LivingHabits}}">
+        <view>生活习性：</view>
+        <text>{{activity.LivingHabits}}</text>
+    </view>
+    <view class="desc" wx:if="{{activity.SpeciesDistribution}}">
+        <view>物种分布：</view>
+        <text>{{activity.SpeciesDistribution}}</text>
+    </view>
+    <view class="desc" wx:if="{{activity.BiologicalCharacteristics}}">
+        <view>生物学特性：</view>
+        <text>{{activity.BiologicalCharacteristics}}</text>
+    </view>
+    <view class="desc" wx:if="{{activity.FisheryUse}}">
+        <view>渔业利用：</view>
+        <text>{{activity.FisheryUse}}</text>
+    </view>
+    <view class="desc" wx:if="{{activity.Endangered}}">
+        <view>频危状态：</view>
+        <text>{{activity.Endangered}}</text>
+    </view>
+</view>
+<view style="height:150rpx;"></view>

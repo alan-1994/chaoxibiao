@@ -1,0 +1,24 @@
+<view class="container ship">
+    <scroll-view id="scroll" scrollY="true">
+        <view bindtap="OpenArticle" class="row" data-id="{{item.ID}}" wx:for="{{rows}}">
+            <view class="img">
+                <image mode="aspectFill" src="{{Comment.toHeadimg(item.HeadPhoto)}}"></image>
+            </view>
+            <view class="left">
+                <text class="title">{{item.Title}}</text>
+                <view class="desc">
+                    <text>{{item.Introduce}}</text>
+                </view>
+                <view class="extend">
+                    <text class="tag">{{item.SortTitle}}</text>
+                    <text class="charge">{{item.Charge}}</text>
+                    <text class="strategy" wx:if="{{item.Strategy}}">有攻略</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="add" wx:if="{{isAdmin}}">
+        <image bindtap="bindAddArticle" mode="aspectFill" src="/images/menuicon/add.png"></image>
+    </view>
+</view>
+<wxs module="Comment" src="../tide/comment.wxs" />

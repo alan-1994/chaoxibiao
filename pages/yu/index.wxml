@@ -1,0 +1,43 @@
+<view class="Container">
+    <image bindtap="bindOpenImg" class="img" mode="aspectFit" src="{{imgUrl}}"></image>
+    <view class="engine">
+        <radio-group bindchange="radioChange">
+            <view>
+                <label>
+                    <radio checked="true" value="1"></radio>鉴鱼引擎：由鉴鱼小程序提供，对鱼类识别率高。</label>
+            </view>
+            <view>
+                <label>
+                    <radio value="2"></radio>动物引擎：能够识别各种动物，对鱼类识别率底。</label>
+            </view>
+        </radio-group>
+    </view>
+    <view class="buts">
+        <button bindtap="bindOpenImg" hoverClass="btn-hover">选择照片</button>
+    </view>
+    <view class="hr"></view>
+    <view class="buts" wx:if="{{list.length>0}}">
+        <view class="desc">
+            <label class="title">识别结果</label>
+        </view>
+    </view>
+    <view class="buts mh">
+        <view class="info" wx:for="{{list}}">
+            <label class="name">{{item.name}}</label>
+            <label class="state">{{Fix.toPercent(item.score)}}相似度</label>
+            <view class="baike_info">
+                <view>
+                    <image mode="widthFix" src="{{item.baike_info.image_url}}" wx:if="{{item.baike_info.image_url}}"></image>
+                </view>
+                <view>
+                    <text wx:if="{{item.baike_info.description}}">{{item.baike_info.description}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="add">
+    <image bindtap="bindJianYu" mode="aspectFill" src="/images/menuicon/jianyu.png"></image>
+    <view>鉴鱼</view>
+</view>
+<wxs module="Fix" src="../tide/fix.wxs" />

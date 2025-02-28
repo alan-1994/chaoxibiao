@@ -1,0 +1,45 @@
+var Fix = ({
+    toFix: (function(value) {
+        if (value) {
+            return (value.toFixed(1))
+        } else {
+            return ("-")
+        }
+    }),
+    toPercent: (function(value) {
+        if (value) {
+            return ((parseFloat(value) * 100).toFixed(2) + "%")
+        } else {
+            return ("0%")
+        }
+    }),
+    toNextDate: (function(value) {
+        if (value) {
+            return (value)
+        } else {
+            return ("23:59")
+        }
+    }),
+    toNextHead: (function(value) {
+        if (value != 0) {
+            return (value)
+        } else {
+            return ("??")
+        }
+    }),
+    toNegative: (function(value) {
+        console.log(value);
+        if (value) {
+            return (Number)(value) - 1
+        } else {
+            return (0)
+        }
+    }),
+});
+module.exports = ({
+    toFix: Fix.toFix,
+    toPercent: Fix.toPercent,
+    toNextDate: Fix.toNextDate,
+    toNextHead: Fix.toNextHead,
+    toNegative: Fix.toNegative,
+});

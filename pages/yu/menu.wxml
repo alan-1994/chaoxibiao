@@ -1,0 +1,52 @@
+<view class="search">
+    <image bindtap="bindOpenImg" class="icon" mode="aspectFit" src="/images/menuicon/xj2.png"></image>
+    <input bindconfirm="binOpenSearch" bindinput="bindSearchInputValue" class="input" name="text" placeholder="☚☚左边  拍照或者输入要查找鱼的名字" value="{{searchText}}"></input>
+    <image bindtap="binOpenSearch" class="but" mode="aspectFit" src="/images/menuicon/search3.png"></image>
+</view>
+<view class="engine shadow">
+    <view class="radio" wx:if="{{IsConfigOpen}}">
+        <radio-group bindchange="radioChange">
+            <view>
+                <label>
+                    <radio checked="true" value="1"></radio>鉴鱼引擎：由鉴鱼小程序提供，对鱼类识别率高。</label>
+            </view>
+            <view>
+                <label>
+                    <radio value="2"></radio>动物引擎：能够识别各种动物，对鱼类识别率底。</label>
+            </view>
+        </radio-group>
+    </view>
+    <view bindtap="binConfigOpen" class="but" wx:if="{{IsConfigOpen==true}}">︽</view>
+    <view bindtap="binConfigOpen" class="but but2" wx:if="{{IsConfigOpen==false}}">︾</view>
+</view>
+<view class="fish">
+    <scroll-view id="scroll" scrollY="true" style="height:100vh;">
+        <view bindtap="OpenArticle" class="row" data-id="{{item.ID}}" wx:for="{{rows}}">
+            <view class="img">
+                <text class="similar" wx:if="{{item.Score}}">相似：{{Fix.toPercent(item.Score)}}</text>
+                <image mode="aspectFit" src="{{Comment.toHeadimg(item.Img)}}"></image>
+            </view>
+            <view class="left">
+                <text class="title" wx:if="{{item.NameCN}}">{{item.NameCN}}</text>
+                <text class="title" wx:if="{{item.NameEN}}">({{item.NameEN}})</text>
+                <text class="title" wx:if="{{item.Name}}">{{item.Name}}</text>
+                <view class="desc">
+                    <view class="name" wx:if="{{item.AnotherName}}">别名：{{item.AnotherName}}</view>
+                    <view wx:if="{{item.Introduction}}">{{item.Introduction}}</view>
+                </view>
+                <view class="extend" wx:if="{{item.Shu}}">
+                    <text class="tag">{{item.Ke}}</text>
+                    <text class="strategy">{{item.Shu}}</text>
+                </view>
+            </view>
+        </view>
+        <button bindtap="binNext" class="btn" hoverClass="btn-hover" wx:if="{{IsAdd}}">加载更多</button>
+        <view style="height:150rpx;"></view>
+    </scroll-view>
+</view>
+<view class="add">
+    <image bindtap="bindJianYu" mode="aspectFill" src="/images/menuicon/jianyu.png"></image>
+    <view>鉴鱼</view>
+</view>
+<wxs module="Fix" src="../tide/fix.wxs" />
+<wxs module="Comment" src="../tide/comment.wxs" />

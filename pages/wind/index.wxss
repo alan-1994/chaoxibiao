@@ -1,0 +1,72 @@
+ec-canvas {
+    height: 450rpx;
+    width: 100%;
+}
+
+.container .title {
+    font-size: 30rpx;
+    margin: 8rpx 0;
+}
+
+.desc {
+    color: #fff;
+    font-size: 30rpx;
+    margin: 20rpx 10rpx 10rpx;
+    text-align: left;
+}
+
+.desc2 {
+    color: #a5a5a5;
+    font-size: 23rpx;
+    padding: 5rpx 10rpx;
+}
+
+.calendar {
+    background-color: rgba(0,0,0,.9);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+}
+
+.calendar .title {
+    background-color: #1f5b59;
+    box-shadow: 2rpx 3rpx 20rpx 8rpx #011414;
+    font-size: 32rpx;
+    padding: 10rpx;
+    position: relative;
+}
+
+.calendar .title image {
+    height: 40rpx;
+    position: absolute;
+    right: 25rpx;
+    top: 10rpx;
+    transform: rotate(45deg);
+    width: 40rpx;
+}
+
+.add {
+    background-color: #1f5b59;
+    border-radius: 10rpx;
+    bottom: 150rpx;
+    font-size: 20rpx;
+    opacity: .9;
+    padding: 5rpx 10rpx 0;
+    position: fixed;
+    right: 30rpx;
+    text-align: center;
+}
+
+.add image {
+    height: 70rpx;
+    width: 70rpx;
+}
+
+.newdate {
+    background: #122b3a;
+    bottom: 0;
+    box-shadow: 0rpx -20rpx 30rpx #000;
+    position: fixed;
+}

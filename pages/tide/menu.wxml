@@ -1,0 +1,86 @@
+<view class="search shadow">
+    <image bindtap="binSearch" class="icon" mode="aspectFit" src="/images/menuicon/search3.png"></image>
+    <input bindtap="binSearch" class="input" name="text" placeholder="输入要查找地方，相差5公里内误差可以忽略" value="{{searchAddrstr}}"></input>
+    <image bindtap="binOpenSearch" class="but" mode="aspectFit" src="/images/menuicon/tide3.png"></image>
+</view>
+<view class="position">
+    <view class="province">
+        <scroll-view scrollIntoView="{{toView}}" scrollWithAnimation="true" scrollY="true" style="height:100vh;">
+            <view bindtap="bindSelectProvince" class="row select" data-id="-3" wx:if="{{index==-3}}">我的</view>
+            <view bindtap="bindSelectProvince" class="row" data-id="-3" wx:if="{{index!=-3}}">我的</view>
+            <view bindtap="bindSelectProvince" class="row select" data-id="-2" wx:if="{{index==-2}}">常用</view>
+            <view bindtap="bindSelectProvince" class="row" data-id="-2" wx:if="{{index!=-2}}">常用</view>
+            <view bindtap="bindSelectProvince" class="row select" data-id="-1" wx:if="{{index==-1}}">附近</view>
+            <view bindtap="bindSelectProvince" class="row" data-id="-1" wx:if="{{index!=-1}}">附近</view>
+            <block wx:for="{{addrstr}}" wx:for-index="cellindex">
+                <view bindtap="bindSelectProvince" class="row select" data-id="{{cellindex}}" wx:if="{{index==cellindex}}"> {{item.label}} </view>
+                <view bindtap="bindSelectProvince" class="row" data-id="{{cellindex}}" wx:if="{{index!=cellindex}}"> {{item.label}} </view>
+            </block>
+            <view style="height:100rpx;"></view>
+        </scroll-view>
+    </view>
+    <view class="city">
+        <scroll-view scrollIntoView="{{toView}}" scrollWithAnimation="true" scrollY="true" style="height:100vh;">
+            <view class="row" wx:if="{{index==-3}}">
+                <view data-id="0">创建的位置：<text bindtap="binAddAddrStr" class="but_text">添加潮汐位置</text>
+                </view>
+                <view class="addrstr" wx:for="{{createAddrStr}}" wx:for-index="cellindex">
+                    <button bindtap="bindOpenDiyTide" class="but" data-id="{{cellindex}}" data-value="{{item.ID}}" formType="default" hoverClass="btn-hover">
+                        <text class="txt_province">{{item.AddrStr_Province}}</text> - <text class="txt_city">{{item.AddrStr_City}}</text> - {{item.AddrStr_Name}} <text class="txt_dstance">[{{Fix.toFix(item.Distance/1000)}}km]</text>
+                    </button>
+                    <button bindtap="bindEditTide" class="but edit" data-id="{{cellindex}}" data-value="{{item.ID}}" formType="default" hoverClass="btn-hover">编辑</button>
+                </view>
+            </view>
+            <view class="row" wx:if="{{index==-2}}">
+                <view data-id="0">最近使用过：</view>
+                <view class="addrstr" wx:for="{{myUseAddrStr}}" wx:for-index="cellindex">
+                    <button bindtap="bindOpenTide" class="but" data-id="{{cellindex}}" data-value="{{item.value}}" formType="default" hoverClass="btn-hover"> {{item.label}} <text class="txt_dstance">({{item.count}})</text>
+                    </button>
+                </view>
+            </view>
+            <view class="row" wx:if="{{index==-1}}">
+                <view data-id="0">附近100公里： <text bindtap="binSelectdPosition" class="but_text">获取附近潮汐位置</text>
+                </view>
+                <view style="clear: both;"></view>
+                <view class="addrstr">
+                    <button bindtap="binSelectdPosition" class="but" formType="default" hoverClass="btn-hover" style="{{isModel}}"> 初次使用请点击“获取附近的潮汐位置” </button>
+                </view>
+                <view class="addrstr" wx:for="{{nearbyAddrStr}}" wx:for-index="cellindex">
+                    <button bindtap="bindOpenTide" class="but" data-id="{{cellindex}}" data-value="{{item.ID}}" formType="default" hoverClass="btn-hover">
+                        <text class="txt_province">{{item.AddrStr_Province}}</text> - <text class="txt_city">{{item.AddrStr_City}}</text> - {{item.AddrStr_Name}} <text class="txt_dstance">[{{Fix.toFix(item.Distance/1000)}}km]</text>
+                    </button>
+                </view>
+            </view>
+            <view class="row" wx:for="{{addrstr[index].children}}" wx:for-index="cellindex">
+                <view data-id="0" wx:if="{{cellindex==0}}">
+                    <text bindtap="binRefreshAddrStr" class="but_text">刷新</text>
+                </view>
+                <view style="clear: both;"></view>
+                <view data-id="{{cellindex}}" id="city_{{cellindex}}">{{item.label}}</view>
+                <view class="addrstr">
+                    <button bindtap="bindOpenTide" class="but" data-id="{{cellindex}}" data-value="{{item.value}}" formType="default" hoverClass="btn-hover" id="addrstr_{{cellindex}}" wx:for="{{addrstr[index].children[cellindex].children}}" wx:for-index="cellindex"> {{item.label}}</button>
+                </view>
+            </view>
+            <view style="height:100rpx;"></view>
+        </scroll-view>
+    </view>
+</view>
+<view class="ModeType" style="{{isModel}}">
+    <view class="content">
+        <view class="model">请选择模式</view>
+        <view bindtap="binModel1" class="left">
+            <image src="/images/menuicon/diaoyu1.png"></image>
+            <view class="title">钓鱼模式</view>
+            <view class="desc">调整配重用到的流速，钓鱼常用的水温、天气和风浪等等数据</view>
+        </view>
+        <view bindtap="binModel2" class="right">
+            <image src="/images/menuicon/gh1.png"></image>
+            <view class="title">赶海模式</view>
+            <view class="desc">曲线中赶海时间段标亮，辅助中推荐赶海时间等等信息</view>
+        </view>
+        <view class="configure">模式稍后可以在“我的-设置”里面修改</view>
+        <view class="configure">如有不懂可以在“潮汐曲线”页面底部留言</view>
+        <view class="configure" style="color: red;">注：程序每次启动都需要获取您的位置来带出附近的潮汐点数据</view>
+    </view>
+</view>
+<wxs module="Fix" src="fix.wxs" />

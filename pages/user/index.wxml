@@ -1,0 +1,25 @@
+<image class="user_back" mode="widthFix" src="https://www.eisk.cn/static/img/userback.jpg"></image>
+<view class="user_info">
+    <image bindtap="bindLoginProfile" class="head" src="{{userInfo.avatarUrl}}" wx:if="{{canIUseGetUserProfile}}"></image>
+    <image bindtap="bindLogin" class="head" src="{{userInfo.avatarUrl}}" wx:else></image>
+    <view class="name">{{userInfo.nickName}}</view>
+</view>
+<view class="desc">本潮汐软件由阳江钓鱼频道提供 版本 V 2.7</view>
+<view class="desc">注：无需登录可使用</view>
+<navigator class="addrstr" hoverClass="navigator-hover" url="/pages/tide/addrstr">港口</navigator>
+<vie bindtap="copymemberid" class="addrstr memberid">ID:{{memberid}}{{vip}}</vie>
+<view class="buts">
+    <button bindtap="bindConfigure" class="btn">设置</button>
+    <view wx:if="{{isAdmin}}">
+        <button bindtap="bindLoginProfile" type="primary" wx:if="{{canIUseGetUserProfile}}">“仅”同步头像和名称(需授权)</button>
+        <button bindgetuserinfo="bindLogin" openType="getUserInfo" type="primary" wx:else>同步头像和名称(需授权)</button>
+        <button bindtap="bindToExamine">留言审核</button>
+        <button bindtap="bindShop" class="btn" hoverClass="btn-hover">阳江钓鱼频道小店</button>
+        <button bindtap="bindToBasan">钓点信息</button>
+        <button bindtap="bindToActivity">活动信息</button>
+    </view>
+    <view wx:if="{{openHidden}}"></view>
+    <button bindtap="bindToYu">旧版“识鱼”功能</button>
+    <button bindtap="bindHelp" hoverClass="btn-hover" style="background-color:#993300;color:#FFF">潮汐表帮助文档</button>
+</view>
+<view style="height:150rpx;"></view>

@@ -1,0 +1,172 @@
+.search .icon {
+    background: #f36;
+    border: 5rpx solid #f36;
+}
+
+.engine {
+    border-top: 1rpx solid #1c5350;
+    font-size: 28rpx;
+    overflow: hidden;
+}
+
+.engine .radio view {
+    margin: 20rpx 0;
+}
+
+.engine .radio {
+    margin: 30rpx auto;
+    margin: 10rpx auto;
+    width: 88%;
+}
+
+.engine .but {
+    background-color: #1f5b59;
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+    padding-bottom: 8rpx;
+    text-align: center;
+}
+
+.engine .but2 {
+    padding-bottom: 0;
+    padding-top: 8rpx;
+}
+
+.fish {
+    height: calc(100vh - 117rpx);
+    overflow: hidden;
+}
+
+.fish .row {
+    background-color: #283f41;
+    margin: 10rpx 0 0;
+    padding: 10rpx 0;
+    transition: all .5s;
+}
+
+.fish .row:hover {
+    background-color: #3b5c5f;
+}
+
+.fish .row .img {
+    border: 2rpx solid #fff;
+    border-radius: 10rpx;
+    height: 350rpx;
+    margin: 10rpx 4%;
+    overflow: hidden;
+    position: relative;
+    width: 92%;
+}
+
+.fish .row .img image {
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+}
+
+.fish .row .img .similar {
+    background: rgba(0,0,0,.6);
+    bottom: 2rpx;
+    font-size: 28rpx;
+    position: absolute;
+    right: 0rpx;
+    text-align: center;
+    text-shadow: 2rpx 2rpx 2rpx 5rpx #000;
+    width: 100%;
+}
+
+.fish .row .left {
+    text-align: center;
+}
+
+.fish .row .left .title {
+    flex: 1;
+    font-size: 30rpx;
+    margin-top: 10rpx;
+    overflow: hidden;
+    padding-left: 5rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fish .row .left .desc {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    color: #aaa;
+    display: -webkit-box;
+    font-size: 20rpx;
+    line-height: 28rpx;
+    margin: 16rpx 10rpx 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.fish .row .left .desc .name {
+    color: #e6e6e6;
+    flex: 1;
+    font-size: 22rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fish .row .left .extend {
+    height: 30rpx;
+    margin-top: 10rpx;
+    padding: 0;
+    text-align: right;
+}
+
+.fish .row .left .extend .date {
+    color: #c7c7c7;
+    float: right;
+    font-size: 22rpx;
+    margin-right: 10rpx;
+}
+
+.fish .row .left .extend .charge {
+    color: #ff6a00;
+    float: right;
+    font-size: 22rpx;
+    margin-right: 10rpx;
+}
+
+.fish .row .left .extend .strategy {
+    color: #f36;
+    float: right;
+    font-size: 22rpx;
+    margin-right: 10rpx;
+}
+
+.fish .row .left .extend .tag {
+    color: #fff;
+    float: left;
+    font-size: 22rpx;
+    margin-left: 10rpx;
+}
+
+.add {
+    bottom: 30rpx;
+    font-size: 20rpx;
+    opacity: .75;
+    position: fixed;
+    right: 30rpx;
+    text-align: center;
+}
+
+.add image {
+    height: 60rpx;
+    width: 60rpx;
+}
+
+.btn {
+    background-color: #1f5b59;
+    color: #fff;
+    font-size: 28rpx;
+    margin: 20rpx;
+}
+
+.btn-hover {
+    background-color: #3ba7a3;
+}
